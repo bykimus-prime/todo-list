@@ -10,6 +10,7 @@ body {
 }
 
 /* header */
+/* header */
 
 .header {
    display: flex;
@@ -25,6 +26,7 @@ body {
 }
 
 /* main */
+/* main */
 
 .main {
    display: flex;
@@ -32,15 +34,22 @@ body {
    background-color: lightgoldenrodyellow;
 }
 
+/* navbar */
+
 .navbar {
    background-color: lightgrey;
    width: 25vh;
 }
 
-.task-display {
+/* project form */
+
+/* task display area */
+
+.content-display {
    width: auto;
 }
 
+/* footer */
 /* footer */
 
 .footer {
