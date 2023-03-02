@@ -25,7 +25,17 @@ const displayProjects = () => {
    userAddedProjects.forEach((project, index) => {
       createProjectDiv(project, index);
    });
-   // removeBook();
+   removeUserProject();
+}
+
+const removeUserProject = () => {
+   const rmvProjectBtn = document.querySelectorAll('.remove-project-btn');
+   rmvProjectBtn.forEach((btn) => {
+      btn.addEventListener('click', () => {
+         userAddedProjects.splice(btn.getAttribute('data'), 1);
+         displayProjects();
+      });
+   });
 }
 
 export { addProject };
