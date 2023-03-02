@@ -1,3 +1,3 @@
-import { createEventListener } from "./projects";
+import { addProject } from "./projects";
 
-createEventListener();
+addProject();

@@ -1,33 +1,52 @@
-// creates event listeners for making a new project
-const createEventListener = () => {
+let userAddedProjects = [];
+
+class Project {
+   constructor(projectTitle) {
+      this.projectTitle = projectTitle;
+   }
+}
+
+const addProject = () => {
    const submitForm = document.getElementById('projectForm');
-   submitForm.addEventListener('submit', processNewProject);
+   const projectTitle = document.querySelector('#projectInput');
+   submitForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const project = new Project(projectTitle.value);
+      userAddedProjects.push(project);
+      displayProjects();
+   });
 }
 
-const processNewProject = (e) => {
-   let newProjectInput = document.getElementById('projectInput').value;
-   addProject(newProjectInput);
-   e.preventDefault();
-}
-
-// create project and add to projects list in html
-const addProject = (textInput) => {
-   let datasetNum = incrementDataset();
-
+const displayProjects = () => {
    const userProjects = document.querySelector('.user-projects');
-   const projectInfo = document.createElement('div');
-   projectInfo.classList.add('project-info');
-   projectInfo.setAttribute('data-project', `${datasetNum}`);
-   userProjects.appendChild(projectInfo);
-
-   const projectName = document.createTextNode(textInput);
-   projectInfo.appendChild(projectName);
+   userProjects.textContent = '';
+   userAddedProjects.forEach((project, index) => {
+      createProjectDiv(project, index);
+   });
+   // removeBook();
 }
 
-//find next data-set
-const incrementDataset = () => {
-   const allProjects = document.querySelectorAll('[data-project]');
-   return allProjects.length;
+const createProjectDiv = (project, index) => {
+   const userProjects = document.querySelector('.user-projects');
+   // create card div
+   const userProject = document.createElement('div');
+   userProject.classList.add('user-project');
+
+   // add book info to cards
+   const projectTitle = document.createElement('p');
+   projectTitle.classList.add('project-title');
+   projectTitle.innerText = `${project.projectTitle}`;
+   userProject.append(projectTitle);
+
+   // add remove button to card
+   const rmvProjectBtn = document.createElement('button');
+   rmvProjectBtn.setAttribute('data', index);
+   rmvProjectBtn.classList.add('remove-project-btn');
+   rmvProjectBtn.textContent = 'Delete Project';
+   userProject.appendChild(rmvProjectBtn);
+
+   // finally add book to book grid
+   userProjects.append(userProject);
 }
 
-export { createEventListener };
+export { addProject };
