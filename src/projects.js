@@ -14,12 +14,11 @@ const processNewProject = (e) => {
 const addProject = (textInput) => {
    let datasetNum = incrementDataset();
 
-   const projectsList = document.querySelector('.projects-list');
-
+   const userProjects = document.querySelector('.user-projects');
    const projectInfo = document.createElement('div');
    projectInfo.classList.add('project-info');
    projectInfo.setAttribute('data-project', `${datasetNum}`);
-   projectsList.appendChild(projectInfo);
+   userProjects.appendChild(projectInfo);
 
    const projectName = document.createTextNode(textInput);
    projectInfo.appendChild(projectName);
