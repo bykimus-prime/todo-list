@@ -38,10 +38,18 @@ body {
 
 .navbar {
    background-color: lightgrey;
-   width: 25vh;
+   width: 25vw;
+   padding: 1rem;
 }
 
 /* project form */
+
+/* user added projects */
+.user-project {
+   width: 20vw;
+   display: flex;
+   justify-content: space-between;
+}
 
 /* task display area */
 
