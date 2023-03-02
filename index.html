@@ -22,17 +22,14 @@
          </div>
          <div class="projects-list">
             <h3>Projects</h3>
-            <div class="user-projects">
-               <div>test project</div>
-               <div>test project</div>
-            </div>
+            <div class="user-projects"><div>test project</div></div>
             <button id="newProjectBtn">Add New Project</button>
             <form id="projectForm"> <!--class="hidden"-->
-               <div class="form-inputs">
-                  <div class="text-input">
+               <div class="project-form-inputs">
+                  <div class="project-text-input">
                      <input type="text" id="projectInput">
                   </div>
-                  <div class="form-btns">
+                  <div class="project-form-btns">
                      <input id="project-submit-btn" type="submit" value="Add">
                      <input id="project-cancel-btn" type="button" value="Cancel">
                   </div>
@@ -41,7 +38,18 @@
          </div>
       </div>
       <div class="content-display">
-         <button>New Task</button>
+         <form id="taskForm">
+            <div class="task-form-inputs">
+               <div class="task-text-input">
+                  <input type="text" id="taskInput">
+               </div>
+               <div class="task-form-btns">
+                  <input id="task-submit-btn" type="submit" value="Add">
+                  <input id="task-cancel-btn" type="button" value="Cancel">
+               </div>
+            </div>
+         </form>
+         <div class="user-tasks"><div>test task</div></div>
       </div>
    </div>
    <div class="footer">
