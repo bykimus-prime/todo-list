@@ -54,7 +54,10 @@ body {
 /* task display area */
 
 .content-display {
-   width: auto;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   width: 75vw;
 }
 
 /* footer */
