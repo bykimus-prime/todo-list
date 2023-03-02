@@ -60,6 +60,10 @@ body {
    width: 75vw;
 }
 
+#taskForm {
+   display: flex;
+}
+
 /* footer */
 /* footer */
 

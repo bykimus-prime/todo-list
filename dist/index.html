@@ -24,6 +24,7 @@
             <h3>Projects</h3>
             <div class="user-projects"><div>test project</div></div>
             <button id="newProjectBtn">Add New Project</button>
+
             <form id="projectForm"> <!--class="hidden"-->
                <div class="project-form-inputs">
                   <div class="project-text-input">
@@ -35,20 +36,34 @@
                   </div>
                </div>
             </form>
+
          </div>
       </div>
+
       <div class="content-display">
          <form id="taskForm">
-            <div class="task-form-inputs">
-               <div class="task-text-input">
-                  <input type="text" id="taskInput">
-               </div>
-               <div class="task-form-btns">
-                  <input id="task-submit-btn" type="submit" value="Add">
-                  <input id="task-cancel-btn" type="button" value="Cancel">
-               </div>
+            <div class="task-form-row">
+               <label class="task-description-label" for="description">Task:</label>
+               <input type="text" id="taskDescription" name="description" placeholder="Task..." required>
+            </div>
+            <div class="task-form-row">
+               <label class="task-dueDate-label" for="dueDate">Due Date:</label>
+               <input type="text" id="taskDueDate" name="dueDate" placeholder="date" required>
+            </div>
+            <div class="task-form-row">
+               <label class="task-priority-label" for="priority">Priority:</label>
+               <select id="priorityLevel" name="priorityLevel">
+                  <option value="0" selected>High</option>
+                  <option value="1">Medium</option>
+                  <option value="2">Low</option>
+               </select>
+            </div>
+            <div class="task-form-btns">
+               <input id="task-submit-btn" type="submit" value="Add">
+               <input id="task-cancel-btn" type="button" value="Cancel">
             </div>
          </form>
+
          <div class="user-tasks"><div>test task</div></div>
       </div>
    </div>
