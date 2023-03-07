@@ -38,15 +38,19 @@ body {
 
 .navbar {
    background-color: lightgrey;
-   width: 25vw;
-   padding: 1rem;
+   width: 15vw;
+   padding: 0.5rem;
+}
+
+.navbar div {
+   margin: 3px 0;
 }
 
 /* project form */
 
 /* user added projects */
 .user-project {
-   width: 20vw;
+   width: 80%;
    display: flex;
    justify-content: space-between;
 }
@@ -57,15 +61,22 @@ body {
    display: flex;
    flex-direction: column;
    align-items: center;
-   width: 75vw;
+   width: 100%;
 }
 
 #taskForm {
    display: flex;
 }
 
+.user-tasks {
+   width: 90%;
+}
+
 .user-task {
    display: flex;
+   justify-content: space-between;
+   border: 1px solid black;
+   padding: 2px;
 }
 
 /* footer */
