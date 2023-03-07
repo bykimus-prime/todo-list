@@ -1,4 +1,4 @@
-const createProjectDiv = (project, index) => {
+function createProjectDiv (project, index) {
    const userProjects = document.querySelector('.user-projects');
    // create project div
    const userProject = document.createElement('div');
@@ -21,7 +21,7 @@ const createProjectDiv = (project, index) => {
    userProjects.append(userProject);
 }
 
-const createTaskDiv = (task, index) => {
+function createTaskDiv (task, index) {
    const userTasks = document.querySelector('.user-tasks');
    // create task div
    const userTask = document.createElement('div');

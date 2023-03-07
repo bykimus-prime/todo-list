@@ -8,7 +8,7 @@ class Project {
    }
 }
 
-const addProject = () => {
+function addProject() {
    const submitForm = document.getElementById('projectForm');
    const projectTitle = document.querySelector('#projectInput');
    submitForm.addEventListener('submit', (e) => {
@@ -19,7 +19,7 @@ const addProject = () => {
    });
 }
 
-const displayProjects = () => {
+function displayProjects() {
    const userProjects = document.querySelector('.user-projects');
    userProjects.textContent = '';
    userAddedProjects.forEach((project, index) => {
@@ -28,7 +28,7 @@ const displayProjects = () => {
    removeUserProject();
 }
 
-const removeUserProject = () => {
+function removeUserProject() {
    const rmvProjectBtn = document.querySelectorAll('.remove-project-btn');
    rmvProjectBtn.forEach((btn) => {
       btn.addEventListener('click', () => {

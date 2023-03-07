@@ -10,7 +10,7 @@ class Task {
    }
 }
 
-const addTask = () => {
+function addTask() {
    const submitForm = document.getElementById('taskForm');
    const description = document.querySelector('#taskDescription');
    const dueDate = document.querySelector('#taskDueDate');
@@ -23,7 +23,7 @@ const addTask = () => {
    });
 }
 
-const displayTasks = () => {
+function displayTasks() {
    const userTasks = document.querySelector('.user-tasks');
    userTasks.textContent = '';
    userAddedTasks.forEach((task, index) => {
@@ -32,7 +32,7 @@ const displayTasks = () => {
    removeUserTask();
 }
 
-const removeUserTask = () => {
+function removeUserTask() {
    const rmvTaskBtn = document.querySelectorAll('.remove-task-btn');
    rmvTaskBtn.forEach((btn) => {
       btn.addEventListener('click', () => {
