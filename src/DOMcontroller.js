@@ -21,4 +21,37 @@ const createProjectDiv = (project, index) => {
    userProjects.append(userProject);
 }
 
-export { createProjectDiv }
+const createTaskDiv = (task, index) => {
+   const userTasks = document.querySelector('.user-tasks');
+   // create task div
+   const userTask = document.createElement('div');
+   userTask.classList.add('user-task');
+
+   // add task info to div
+   const taskTitle = document.createElement('p');
+   taskTitle.classList.add('project-title');
+   taskTitle.innerText = `${task.description}`;
+   userTask.append(taskTitle);
+
+   const taskDate = document.createElement('p');
+   taskDate.classList.add('task-date');
+   taskDate.innerText = `${task.dueDate}`;
+   userTask.append(taskDate);
+
+   const taskPriority = document.createElement('p');
+   taskPriority.classList.add('task-priority');
+   taskPriority.innerText = `${task.priority}`;
+   userTask.append(taskPriority);
+
+   // add remove button to div
+   const rmvTaskBtn = document.createElement('button');
+   rmvTaskBtn.setAttribute('data', index);
+   rmvTaskBtn.classList.add('remove-task-btn');
+   rmvTaskBtn.textContent = 'Delete Task';
+   userTask.appendChild(rmvTaskBtn);
+
+   // finally add task to tasks list
+   userTasks.append(userTask);
+}
+
+export { createProjectDiv, createTaskDiv }
