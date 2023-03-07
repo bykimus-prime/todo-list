@@ -22,7 +22,13 @@
          </div>
          <div class="projects-list">
             <h3>Projects</h3>
-            <div class="user-projects"><div>test project</div></div>
+            <div class="user-projects">
+               <!-- test project for styling purposes -->
+               <div class="user-project">
+                  <p class="project-title">test project</p>
+                  <button class="remove-project-btn">Delete Project</button>
+               </div>
+            </div>
             <button id="newProjectBtn">Add New Project</button>
 
             <form id="projectForm"> <!--class="hidden"-->
@@ -58,13 +64,28 @@
                   <option value="2">Low</option>
                </select>
             </div>
+            <div class="task-form-row">
+               <label class="task-project-label" for="taskProject">Project:</label>
+               <select id="taskProject" name="taskProject">
+                  <option value="Home" selected>Home</option>
+               </select>
+            </div>
             <div class="task-form-btns">
                <input id="task-submit-btn" type="submit" value="Add">
                <input id="task-cancel-btn" type="button" value="Cancel">
             </div>
          </form>
 
-         <div class="user-tasks"><div>test task</div></div>
+         <div class="user-tasks">
+            <!-- test task for styling purposes -->
+            <div class="user-task">
+               <p class="project-title">content</p>
+               <p class="task-date">today</p>
+               <p class="task-priority">High</p>
+               <p class="project-location">Home</p>
+               <button class="remove-task-btn">Delete Task</button>
+            </div>
+         </div>
       </div>
    </div>
    <div class="footer">
