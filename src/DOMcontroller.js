@@ -67,8 +67,29 @@ function projectBtnChanger() {
    })
 }
 
+function taskBtnChanger() {
+   const showTaskFormBtn = document.getElementById('taskFormDispBtn');
+   const modal = document.querySelector('.modal');
+   const overlay = document.querySelector('.overlay');
+   const taskSubmitBtn = document.getElementById('task-submit-btn');
+
+   const showTaskForm = () => {
+      modal.classList.add('active');
+      overlay.classList.add('active');
+   }
+
+   const closeModal = () => {
+      modal.classList.remove('active');
+      overlay.classList.remove('active');
+   }
+   showTaskFormBtn.onclick = showTaskForm;
+   taskSubmitBtn.onclick = closeModal;
+   overlay.onclick = closeModal;
+}
+
 export {
    createProjectDiv,
    createTaskDiv,
-   projectBtnChanger
+   projectBtnChanger,
+   taskBtnChanger
 }

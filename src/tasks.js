@@ -19,6 +19,7 @@ function addTask() {
       e.preventDefault();
       const task = new Task(description.value, dueDate.value, priority.value);
       userAddedTasks.push(task);
+      document.getElementById('taskForm').reset(); // resets form on submit
       displayTasks();
    });
 }
