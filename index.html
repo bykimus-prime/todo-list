@@ -47,34 +47,40 @@
       </div>
 
       <div class="content-display">
-         <form id="taskForm">
-            <div class="task-form-row">
-               <label class="task-description-label" for="description">Task:</label>
-               <input type="text" id="taskDescription" name="description" placeholder="Task..." required>
-            </div>
-            <div class="task-form-row">
-               <label class="task-dueDate-label" for="dueDate">Due Date:</label>
-               <input type="text" id="taskDueDate" name="dueDate" placeholder="date" required>
-            </div>
-            <div class="task-form-row">
-               <label class="task-priority-label" for="priority">Priority:</label>
-               <select id="priorityLevel" name="priorityLevel">
-                  <option value="0" selected>High</option>
-                  <option value="1">Medium</option>
-                  <option value="2">Low</option>
-               </select>
-            </div>
-            <div class="task-form-row">
-               <label class="task-project-label" for="taskProject">Project:</label>
-               <select id="taskProject" name="taskProject">
-                  <option value="Home" selected>Home</option>
-               </select>
-            </div>
-            <div class="task-form-btns">
-               <input id="task-submit-btn" type="submit" value="Add">
-               <input id="task-cancel-btn" type="button" value="Cancel">
-            </div>
-         </form>
+         <button id="taskFormDispBtn">Add New Task</button>
+         <div class="modal">
+            <form id="taskForm">
+               <div class="task-form-row">
+                  <label class="task-description-label" for="description">Task:</label>
+                  <input type="text" id="taskDescription" name="description" placeholder="Task..." required>
+               </div>
+               <div class="task-form-row">
+                  <label class="task-dueDate-label" for="dueDate">Due Date:</label>
+                  <input type="text" id="taskDueDate" name="dueDate" placeholder="date" required>
+               </div>
+               <div class="task-form-row">
+                  <label class="task-priority-label" for="priority">Priority:</label>
+                  <select id="priorityLevel" name="priorityLevel">
+                     <option value="0" selected>High</option>
+                     <option value="1">Medium</option>
+                     <option value="2">Low</option>
+                  </select>
+               </div>
+               <div class="task-form-row">
+                  <label class="task-project-label" for="taskProject">Project:</label>
+                  <select id="taskProject" name="taskProject">
+                     <option value="Home" selected>Home</option>
+                  </select>
+               </div>
+               <div class="task-form-row">
+                  <p>*All fields required.</p>
+               </div>
+               <div class="task-form-btns">
+                  <button id="task-submit-btn" type="submit" value="Add">Add</button>
+                  <input id="task-cancel-btn" type="button" value="Cancel"></input>
+               </div>
+            </form>
+         </div>
 
          <div class="user-tasks">
             <!-- test task for styling purposes -->
@@ -88,6 +94,7 @@
          </div>
       </div>
    </div>
+   <div class="overlay"></div>
    <div class="footer">
       <p>Made by Alexander Rodzyanko</p>
    </div>
