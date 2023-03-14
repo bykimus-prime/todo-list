@@ -54,4 +54,21 @@ function createTaskDiv (task, index) {
    userTasks.append(userTask);
 }
 
-export { createProjectDiv, createTaskDiv }
+function projectBtnChanger() {
+   const newProjectBtn = document.getElementById('newProjectBtn');
+   const projectSubBtn = document.getElementById('project-submit-btn');
+   newProjectBtn.addEventListener('click', () => {
+      document.getElementById('projectForm').style.display = 'block';
+      document.getElementById('newProjectBtn').style.display = 'none';
+   });
+   projectSubBtn.addEventListener('click', () => {
+      document.getElementById('projectForm').style.display = 'none';
+      document.getElementById('newProjectBtn').style.display = 'block';
+   })
+}
+
+export {
+   createProjectDiv,
+   createTaskDiv,
+   projectBtnChanger
+}

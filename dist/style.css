@@ -48,6 +48,10 @@ body {
 
 /* project form */
 
+#projectForm {
+   display: none;
+}
+
 /* user added projects */
 .user-project {
    width: 80%;
