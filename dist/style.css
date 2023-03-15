@@ -38,8 +38,8 @@ body {
 
 .navbar {
    background-color: lightgrey;
-   width: 10%;
-   padding: 0.5rem;
+   width: 20%;
+   padding: 4px;
 }
 
 .navbar div {
@@ -48,16 +48,11 @@ body {
 
 /* projects list */
 
-#newProjectBtn {
-   width: 120px;
-   height: 35px;
-   padding: 5px;
-   margin-left: 20px;
-   background-color: lightgreen;
-   border: 1px solid black;
-   border-radius: 10px;
-   cursor: pointer;
-   font-weight: bold;
+/* user added projects */
+.user-project {
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
 }
 
 /* project form */
@@ -66,11 +61,8 @@ body {
    display: none;
 }
 
-/* user added projects */
-.user-project {
-   width: 80%;
-   display: flex;
-   justify-content: space-between;
+#projectInput {
+   width: 92px;
 }
 
 /* task display area */
@@ -80,18 +72,6 @@ body {
    flex-direction: column;
    align-items: center;
    width: 100%;
-}
-
-#taskFormDispBtn {
-   width: 120px;
-   height: 35px;
-   padding: 5px;
-   margin-left: 20px;
-   background-color: lightgreen;
-   border: 1px solid black;
-   border-radius: 10px;
-   cursor: pointer;
-   font-weight: bold;
 }
 
 .user-tasks {
@@ -137,9 +117,20 @@ body {
    font-size: 14px;
 }
 
-#task-submit-btn {
-   width: 100px;
-   height: 30px;
+.task-form-btns {
+   display: flex;
+   justify-content: space-around;
+}
+
+/* buttons */
+/* buttons */
+
+#taskFormDispBtn,
+#newProjectBtn {
+   width: 120px;
+   height: 35px;
+   padding: 5px;
+   margin: 3px;
    background-color: lightgreen;
    border: 1px solid black;
    border-radius: 10px;
@@ -147,12 +138,45 @@ body {
    font-weight: bold;
 }
 
+#taskFormDispBtn:hover,
+#newProjectBtn:hover {
+   filter: brightness(95%);
+}
+
+#task-submit-btn,
+#project-submit-btn {
+   width: 40px;
+   height: 25px;
+   background-color: lightgreen;
+   border: 1px solid black;
+   border-radius: 10px;
+   cursor: pointer;
+   font-weight: bold;
+}
+
+#task-submit-btn:hover,
+#project-submit-btn:hover {
+   filter: brightness(95%);
+}
+
 form:invalid button {
    opacity: 0.3;
    pointer-events: none;
 }
 
-#task-submit-btn:hover {
+#task-cancel-btn,
+#project-cancel-btn {
+   width: 50px;
+   height: 25px;
+   background-color: lightcoral;
+   border: 1px solid black;
+   border-radius: 10px;
+   cursor: pointer;
+   font-weight: bold;
+}
+
+#task-cancel-btn:hover,
+#project-cancel-btn:hover {
    filter: brightness(95%);
 }
 
@@ -172,10 +196,10 @@ form:invalid button {
 .modal {
    position: fixed;
    z-index: 1;
-   top: 50%;
+   top: 30%;
    left: 50%;
    width: 300px;
-   padding: 20px;
+   padding: 10px 0;
    border-radius: 10px;
    background-color: #F0EEF1;
    transform: translate(-50%, -50%) scale(0);
@@ -205,8 +229,17 @@ form:invalid button {
 
 /* mobile device styling */
 
-/* @media (max-width: 650px) {
-   #taskForm input[type=text] {
-      width: 70px;
+@media (max-width: 650px) {
+   .navbar {
+      width: 33%;
    }
-} */
+
+   .remove-project-btn {
+      height: 20px;
+   }
+
+   #newProjectBtn {
+      width: 80px;
+      height: 45px;
+   }
+}

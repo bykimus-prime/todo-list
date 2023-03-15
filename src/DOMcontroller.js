@@ -14,7 +14,7 @@ function createProjectDiv (project, index) {
    const rmvProjectBtn = document.createElement('button');
    rmvProjectBtn.setAttribute('data', index);
    rmvProjectBtn.classList.add('remove-project-btn');
-   rmvProjectBtn.textContent = 'Delete Project';
+   rmvProjectBtn.textContent = 'Delete';
    userProject.appendChild(rmvProjectBtn);
 
    // finally add project to projects list
@@ -47,7 +47,7 @@ function createTaskDiv (task, index) {
    const rmvTaskBtn = document.createElement('button');
    rmvTaskBtn.setAttribute('data', index);
    rmvTaskBtn.classList.add('remove-task-btn');
-   rmvTaskBtn.textContent = 'Delete Task';
+   rmvTaskBtn.textContent = 'Delete';
    userTask.appendChild(rmvTaskBtn);
 
    // finally add task to tasks list
