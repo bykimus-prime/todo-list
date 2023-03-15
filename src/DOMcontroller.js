@@ -57,21 +57,29 @@ function createTaskDiv (task, index) {
 function projectBtnChanger() {
    const newProjectBtn = document.getElementById('newProjectBtn');
    const projectSubBtn = document.getElementById('project-submit-btn');
+   const projectCancelBtn = document.getElementById('project-cancel-btn');
    newProjectBtn.addEventListener('click', () => {
       document.getElementById('projectForm').style.display = 'block';
       document.getElementById('newProjectBtn').style.display = 'none';
-   });
+   })
    projectSubBtn.addEventListener('click', () => {
       document.getElementById('projectForm').style.display = 'none';
       document.getElementById('newProjectBtn').style.display = 'block';
+   })
+
+   projectCancelBtn.addEventListener('click', () => {
+      document.getElementById('projectForm').style.display = 'none';
+      document.getElementById('newProjectBtn').style.display = 'block';
+      document.getElementById('projectForm').reset();
    })
 }
 
 function taskBtnChanger() {
    const showTaskFormBtn = document.getElementById('taskFormDispBtn');
+   const taskSubmitBtn = document.getElementById('task-submit-btn');
+   const taskCancelBtn = document.getElementById('task-cancel-btn');
    const modal = document.querySelector('.modal');
    const overlay = document.querySelector('.overlay');
-   const taskSubmitBtn = document.getElementById('task-submit-btn');
 
    const showTaskForm = () => {
       modal.classList.add('active');
@@ -85,6 +93,11 @@ function taskBtnChanger() {
    showTaskFormBtn.onclick = showTaskForm;
    taskSubmitBtn.onclick = closeModal;
    overlay.onclick = closeModal;
+
+   taskCancelBtn.addEventListener('click', () => {
+      closeModal();
+      document.getElementById('taskForm').reset();
+   })
 }
 
 export {
