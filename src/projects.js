@@ -1,4 +1,4 @@
-import { createProjectDiv } from "./DOMcontroller";
+import { createProjectDiv, createHomeOption } from "./DOMcontroller";
 
 let userAddedProjects = [];
 
@@ -21,10 +21,22 @@ function addProject() {
 
 function displayProjects() {
    const userProjects = document.querySelector('.user-projects');
+   const taskProject = document.getElementById('taskProject');
    userProjects.textContent = '';
+   taskProject.textContent = '';
+   createHomeOption();
    userAddedProjects.forEach((project, index) => {
       createProjectDiv(project, index);
    });
+
+   userAddedProjects.forEach((project) => {
+      let newOption = document.createElement('option');
+      newOption.value = project.projectTitle;
+      newOption.innerText = project.projectTitle;
+      taskProject.appendChild(newOption);
+   });
+
+   console.log(userAddedProjects);
    removeUserProject();
 }
 

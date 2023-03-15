@@ -3,10 +3,11 @@ import { createTaskDiv } from "./DOMcontroller";
 let userAddedTasks = [];
 
 class Task {
-   constructor(description, dueDate, priority) {
+   constructor(description, dueDate, priority, projectFolder) {
       this.description = description;
       this.dueDate = dueDate;
       this.priority = priority;
+      this.projectFolder = projectFolder;
    }
 }
 
@@ -15,9 +16,10 @@ function addTask() {
    const description = document.querySelector('#taskDescription');
    const dueDate = document.querySelector('#taskDueDate');
    const priority = document.querySelector('#priorityLevel');
+   // const projectFolder = document.querySelector('');
    submitForm.addEventListener('submit', (e) => {
       e.preventDefault();
-      const task = new Task(description.value, dueDate.value, priority.value);
+      const task = new Task(description.value, dueDate.value, priority.value, projectFolder.value);
       userAddedTasks.push(task);
       document.getElementById('taskForm').reset(); // resets form on submit
       displayTasks();

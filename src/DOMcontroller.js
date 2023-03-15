@@ -3,6 +3,7 @@ function createProjectDiv (project, index) {
    // create project div
    const userProject = document.createElement('div');
    userProject.classList.add('user-project');
+   userProject.setAttribute('id', `${project.projectTitle}`);
 
    // add project info to div
    const projectTitle = document.createElement('p');
@@ -19,6 +20,15 @@ function createProjectDiv (project, index) {
 
    // finally add project to projects list
    userProjects.append(userProject);
+}
+
+function createHomeOption() {
+   const optionField = document.getElementById('taskProject');
+   const homeOption = document.createElement('option');
+   homeOption.value = 'Home';
+   homeOption.textContent = 'Home';
+   homeOption.setAttribute('selected', 'true');
+   optionField.appendChild(homeOption);
 }
 
 function createTaskDiv (task, index) {
@@ -104,5 +114,6 @@ export {
    createProjectDiv,
    createTaskDiv,
    projectBtnChanger,
-   taskBtnChanger
-}
+   taskBtnChanger,
+   createHomeOption
+};
