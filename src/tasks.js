@@ -16,7 +16,7 @@ function addTask() {
    const description = document.querySelector('#taskDescription');
    const dueDate = document.querySelector('#taskDueDate');
    const priority = document.querySelector('#priorityLevel');
-   // const projectFolder = document.querySelector('');
+   const projectFolder = document.getElementById('taskProject');
    submitForm.addEventListener('submit', (e) => {
       e.preventDefault();
       const task = new Task(description.value, dueDate.value, priority.value, projectFolder.value);

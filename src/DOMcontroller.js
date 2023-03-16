@@ -53,6 +53,11 @@ function createTaskDiv (task, index) {
    taskPriority.innerText = `${task.priority}`;
    userTask.append(taskPriority);
 
+   const projectFolder = document.createElement('p');
+   projectFolder.classList.add('project-folder');
+   projectFolder.innerText = `${task.projectFolder}`;
+   userTask.append(projectFolder);
+
    // add remove button to div
    const rmvTaskBtn = document.createElement('button');
    rmvTaskBtn.setAttribute('data', index);
