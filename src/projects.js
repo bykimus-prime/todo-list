@@ -1,26 +1,41 @@
 import { createProjectDiv, createHomeOption } from "./DOMcontroller";
 
+let selectedProjectId = null
+const userProjects = document.querySelector('[data-user-projects]');
+
 let userAddedProjects = [];
 
 class Project {
-   constructor(projectTitle) {
+   constructor(id, projectTitle) {
+      this.id = id;
       this.projectTitle = projectTitle;
+      this.projectTasks = [];
    }
 }
 
+// if the clicked item is a div, set the global variable to the clicked div's projectId
+userProjects.addEventListener('click', e => {
+   if (e.target.tagName.toLowerCase() === 'div') {
+      selectedProjectId = e.target.dataset.projectId;
+      displayProjects();
+   }
+})
+
 function addProject() {
-   const submitForm = document.getElementById('projectForm');
-   const projectTitle = document.querySelector('#projectInput');
-   submitForm.addEventListener('submit', (e) => {
+   const submitForm = document.querySelector('[data-new-project-form]');
+   const projectTitle = document.querySelector('[data-new-project-input]');
+   submitForm.addEventListener('submit', e => {
       e.preventDefault();
-      const project = new Project(projectTitle.value);
+      if (projectTitle == null || projectTitle === '') return
+      let id = Date.now().toString(); // generate unique id based on date
+      const project = new Project(id, projectTitle.value);
+      projectTitle.value = null; // clear form input field
       userAddedProjects.push(project);
       displayProjects();
    });
 }
 
 function displayProjects() {
-   const userProjects = document.querySelector('.user-projects');
    const taskProject = document.getElementById('taskProject');
    userProjects.textContent = '';
    taskProject.textContent = '';
@@ -50,4 +65,7 @@ function removeUserProject() {
    });
 }
 
-export { addProject };
+export {
+   addProject,
+   selectedProjectId
+};

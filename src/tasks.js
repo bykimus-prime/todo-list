@@ -32,6 +32,7 @@ function displayTasks() {
    userAddedTasks.forEach((task, index) => {
       createTaskDiv(task, index);
    });
+   console.log(userAddedTasks);
    removeUserTask();
 }
 
@@ -45,4 +46,7 @@ function removeUserTask() {
    });
 }
 
-export { addTask };
+export {
+   addTask,
+   userAddedTasks
+};

@@ -1,14 +1,17 @@
+import { selectedProjectId } from "./projects";
+
 function createProjectDiv (project, index) {
-   const userProjects = document.querySelector('.user-projects');
+   const userProjects = document.querySelector('[data-user-projects]');
    // create project div
    const userProject = document.createElement('div');
    userProject.classList.add('user-project');
    userProject.setAttribute('id', `${project.projectTitle}`);
+   userProject.dataset.projectId = project.id;
 
    // add project info to div
    const projectTitle = document.createElement('p');
    projectTitle.classList.add('project-title');
-   projectTitle.innerText = `${project.projectTitle}`;
+   projectTitle.innerText = project.projectTitle;
    userProject.append(projectTitle);
 
    // add remove button to div
@@ -17,6 +20,11 @@ function createProjectDiv (project, index) {
    rmvProjectBtn.classList.add('remove-project-btn');
    rmvProjectBtn.textContent = 'Delete';
    userProject.appendChild(rmvProjectBtn);
+
+   // if the selected project.id matches the global variable, change class
+   if (project.id === selectedProjectId) {
+      userProject.classList.add('selected');
+   }
 
    // finally add project to projects list
    userProjects.append(userProject);
@@ -120,5 +128,5 @@ export {
    createTaskDiv,
    projectBtnChanger,
    taskBtnChanger,
-   createHomeOption
+   createHomeOption,
 };
