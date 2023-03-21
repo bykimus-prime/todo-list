@@ -84,6 +84,7 @@ function projectBtnChanger() {
    newProjectBtn.addEventListener('click', () => {
       document.getElementById('projectForm').style.display = 'block';
       document.getElementById('newProjectBtn').style.display = 'none';
+      document.getElementById('projectInput').focus();
    })
    projectSubBtn.addEventListener('click', () => {
       document.getElementById('projectForm').style.display = 'none';
@@ -107,6 +108,7 @@ function taskBtnChanger() {
    const showTaskForm = () => {
       modal.classList.add('active');
       overlay.classList.add('active');
+      document.getElementById('taskDescription').focus();
    }
 
    const closeModal = () => {
