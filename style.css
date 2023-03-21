@@ -46,6 +46,10 @@ body {
    margin: 3px 0;
 }
 
+.selected {
+   font-weight: bold;
+}
+
 /* projects list */
 
 /* user added projects */
