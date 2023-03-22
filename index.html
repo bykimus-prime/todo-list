@@ -49,7 +49,7 @@
       <div class="content-display">
          <button id="taskFormDispBtn">Add New Task</button>
          <div class="modal">
-            <form id="taskForm">
+            <form id="taskForm" data-new-task-form>
                <div class="task-form-row">
                   <label class="task-description-label" for="description">Task:</label>
                   <input type="text" id="taskDescription" name="description" placeholder="Task..." required>
@@ -82,7 +82,7 @@
             </form>
          </div>
 
-         <div class="user-tasks">
+         <div class="user-tasks" data-project-tasks>
             <!-- test task for styling purposes -->
             <div class="user-task">
                <p class="project-title">content</p>
