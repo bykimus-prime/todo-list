@@ -1,4 +1,5 @@
 import { createProjectDiv, createHomeOption } from "./DOMcontroller";
+import { displayTasks } from "./tasks";
 
 let selectedProjectId = null
 const userProjects = document.querySelector('[data-user-projects]');
@@ -17,7 +18,9 @@ class Project {
 userProjects.addEventListener('click', e => {
    if (e.target.tagName.toLowerCase() === 'div') {
       selectedProjectId = e.target.dataset.projectId;
+      console.log(`click event selected project id: ${selectedProjectId}`);
       displayProjects();
+      displayTasks();
    }
 })
 

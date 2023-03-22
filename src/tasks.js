@@ -26,8 +26,6 @@ function addTask() {
       if (description == null || description === '') return
       const task = new Task(description.value, dueDate.value, priority.value, projectId.value, projectId.options[projectId.selectedIndex].id);
       const selectedProject = userAddedProjects.find(project => project.id === projectId.value);
-      console.log(selectedProject);
-      console.log(`projectId id: ${projectId.value}`);
       selectedProject.projectTasks.push(task);
       userAddedTasks.push(task);
       document.getElementById('taskForm').reset(); // resets form on submit
@@ -36,13 +34,22 @@ function addTask() {
 }
 
 function displayTasks() {
+   const selectedProject = userAddedProjects.find(project => project.id === selectedProjectId);
    const userTasks = document.querySelector('.user-tasks');
    userTasks.textContent = '';
-   userAddedTasks.forEach((task, index) => {
-      createTaskDiv(task, index);
-   });
-   console.log(userAddedTasks);
+   console.log(selectedProject);
+   console.log(selectedProjectId);
+   if (selectedProjectId == null) {
+      userAddedTasks.forEach((task, index) => {
+         createTaskDiv(task, index);
+      });
+   } else {
+      selectedProject.projectTasks.forEach((task, index) => {
+         createTaskDiv(task, index);
+      });
+   }
    console.log(userAddedProjects);
+   console.log(selectedProjectId);
    removeUserTask();
 }
 
@@ -58,5 +65,6 @@ function removeUserTask() {
 
 export {
    addTask,
+   displayTasks,
    userAddedTasks
 };
