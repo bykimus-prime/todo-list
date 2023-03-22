@@ -25,11 +25,10 @@ function addTask() {
       e.preventDefault();
       if (description == null || description === '') return
       const task = new Task(description.value, dueDate.value, priority.value, projectId.value, projectId.options[projectId.selectedIndex].id);
-      // const selectedProject = userAddedProjects.find(project => project.id === projectId.value);
-      // console.log(selectedProject);
-      // console.log(`projectId id: ${projectId.id}`);
-      // console.log(`project id: ${userAddedProjects.project.id}`);
-      // selectedProject.projectTasks.push(task); // left off here. not selected but from projectId
+      const selectedProject = userAddedProjects.find(project => project.id === projectId.value);
+      console.log(selectedProject);
+      console.log(`projectId id: ${projectId.value}`);
+      selectedProject.projectTasks.push(task);
       userAddedTasks.push(task);
       document.getElementById('taskForm').reset(); // resets form on submit
       displayTasks();
