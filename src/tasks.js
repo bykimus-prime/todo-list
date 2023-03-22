@@ -1,13 +1,17 @@
 import { createTaskDiv } from "./DOMcontroller";
+import { selectedProjectId, userAddedProjects } from "./projects";
+
+const userTasks = document.querySelector('[data-project-tasks]');
 
 let userAddedTasks = [];
 
 class Task {
-   constructor(description, dueDate, priority, projectFolder) {
+   constructor(description, dueDate, priority, projectId, projectName) {
       this.description = description;
       this.dueDate = dueDate;
       this.priority = priority;
-      this.projectFolder = projectFolder;
+      this.projectId = projectId;
+      this.projectName = projectName;
    }
 }
 
@@ -16,10 +20,16 @@ function addTask() {
    const description = document.querySelector('#taskDescription');
    const dueDate = document.querySelector('#taskDueDate');
    const priority = document.querySelector('#priorityLevel');
-   const projectFolder = document.getElementById('taskProject');
+   const projectId = document.getElementById('taskProject');
    submitForm.addEventListener('submit', (e) => {
       e.preventDefault();
-      const task = new Task(description.value, dueDate.value, priority.value, projectFolder.value);
+      if (description == null || description === '') return
+      const task = new Task(description.value, dueDate.value, priority.value, projectId.value, projectId.options[projectId.selectedIndex].id);
+      // const selectedProject = userAddedProjects.find(project => project.id === projectId.value);
+      // console.log(selectedProject);
+      // console.log(`projectId id: ${projectId.id}`);
+      // console.log(`project id: ${userAddedProjects.project.id}`);
+      // selectedProject.projectTasks.push(task); // left off here. not selected but from projectId
       userAddedTasks.push(task);
       document.getElementById('taskForm').reset(); // resets form on submit
       displayTasks();
@@ -33,6 +43,7 @@ function displayTasks() {
       createTaskDiv(task, index);
    });
    console.log(userAddedTasks);
+   console.log(userAddedProjects);
    removeUserTask();
 }
 

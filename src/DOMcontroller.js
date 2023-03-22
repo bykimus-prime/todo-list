@@ -1,4 +1,4 @@
-import { selectedProjectId } from "./projects";
+import { selectedProjectId, userAddedProjects } from "./projects";
 
 function createProjectDiv (project, index) {
    const userProjects = document.querySelector('[data-user-projects]');
@@ -63,7 +63,7 @@ function createTaskDiv (task, index) {
 
    const projectFolder = document.createElement('p');
    projectFolder.classList.add('project-folder');
-   projectFolder.innerText = `${task.projectFolder}`;
+   projectFolder.innerText = `${task.projectName}`;
    userTask.append(projectFolder);
 
    // add remove button to div

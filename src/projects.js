@@ -46,8 +46,9 @@ function displayProjects() {
 
    userAddedProjects.forEach((project) => {
       let newOption = document.createElement('option');
-      newOption.value = project.projectTitle;
+      newOption.value = project.id;
       newOption.innerText = project.projectTitle;
+      newOption.id = project.projectTitle;
       taskProject.appendChild(newOption);
    });
 
@@ -67,5 +68,6 @@ function removeUserProject() {
 
 export {
    addProject,
-   selectedProjectId
+   selectedProjectId,
+   userAddedProjects
 };
