@@ -1,8 +1,9 @@
 import { createProjectDiv, createHomeOption } from "./DOMcontroller";
-import { displayTasks } from "./tasks";
+import { displayTasks, userAddedTasks } from "./tasks";
 
 let selectedProjectId = null
 const userProjects = document.querySelector('[data-user-projects]');
+const allTasks = document.querySelector('.all-tasks');
 
 let userAddedProjects = [];
 
@@ -18,10 +19,19 @@ class Project {
 userProjects.addEventListener('click', e => {
    if (e.target.tagName.toLowerCase() === 'div') {
       selectedProjectId = e.target.dataset.projectId;
-      console.log(`click event selected project id: ${selectedProjectId}`);
+      allTasks.classList.remove('selected');
+      console.log(selectedProjectId);
       displayProjects();
       displayTasks();
    }
+})
+
+allTasks.addEventListener('click', e => {
+   selectedProjectId = '1';
+   allTasks.classList.add('selected');
+   displayProjects();
+   displayTasks();
+   console.log(selectedProjectId);
 })
 
 function addProject() {
@@ -67,7 +77,12 @@ function removeUserProject() {
          displayProjects();
       });
    });
+   console.log(userAddedTasks);
 }
+
+// tasksFromProject = userAddedProjects.projectId;
+// userAddedTasks = userAddedTasks.filter(task => task.projectId !== targetProject);
+// userAddedProjects = userAddedProjects.filter(project => project !== targetProject);
 
 export {
    addProject,

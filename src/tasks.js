@@ -24,10 +24,15 @@ function addTask() {
    submitForm.addEventListener('submit', (e) => {
       e.preventDefault();
       if (description == null || description === '') return
-      const task = new Task(description.value, dueDate.value, priority.value, projectId.value, projectId.options[projectId.selectedIndex].id);
-      const selectedProject = userAddedProjects.find(project => project.id === projectId.value);
-      selectedProject.projectTasks.push(task);
-      userAddedTasks.push(task);
+      if (selectedProjectId == null || selectedProjectId == '1') {
+         const task = new Task(description.value, dueDate.value, priority.value, projectId.value, 'Home');
+         userAddedTasks.push(task);
+      } else {
+         const task = new Task(description.value, dueDate.value, priority.value, projectId.value, projectId.options[projectId.selectedIndex].id);
+         const selectedProject = userAddedProjects.find(project => project.id === projectId.value);
+         selectedProject.projectTasks.push(task);
+         userAddedTasks.push(task);
+      }
       document.getElementById('taskForm').reset(); // resets form on submit
       displayTasks();
    });
@@ -39,7 +44,7 @@ function displayTasks() {
    userTasks.textContent = '';
    console.log(selectedProject);
    console.log(selectedProjectId);
-   if (selectedProjectId == null) {
+   if (selectedProjectId == null || selectedProjectId == '1') {
       userAddedTasks.forEach((task, index) => {
          createTaskDiv(task, index);
       });
