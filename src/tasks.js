@@ -25,7 +25,7 @@ function addTask() {
       e.preventDefault();
       if (description == null || description === '') return
       if (selectedProjectId == null || selectedProjectId == '1') {
-         const task = new Task(description.value, dueDate.value, priority.value, projectId.value, 'Home');
+         const task = new Task(description.value, dueDate.value, priority.value, projectId.value, 'All Tasks');
          userAddedTasks.push(task);
       } else {
          const task = new Task(description.value, dueDate.value, priority.value, projectId.value, projectId.options[projectId.selectedIndex].id);

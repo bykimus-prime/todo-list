@@ -16,7 +16,7 @@
    <div class="main">
       <div class="navbar">
          <div class="default-projects">
-            <div class="all-tasks" data-project-id="1">Home (All Tasks)</div>
+            <div class="all-tasks" data-project-id="1">All Tasks</div>
             <div class="today-tasks">Today</div>
             <div class="week-tasks">This Week</div>
          </div>
@@ -69,7 +69,7 @@
                <div class="task-form-row">
                   <label class="task-project-label" for="taskProject">Project:</label>
                   <select id="taskProject" name="taskProject">
-                     <option value="Home" selected>Home</option>
+                     <option value="1" id='All Tasks' selected>All Tasks</option>
                   </select>
                </div>
                <div class="task-form-row">
@@ -82,13 +82,23 @@
             </form>
          </div>
 
+         <div class="task-info">
+            <div class="task-info-legend">
+               <p class="task-legend">Task</p>
+               <p class="date-legend">Date</p>
+               <p class="priority-legend">Priority</p>
+               <p class="project-legend">Project</p>
+               <p class="space-legend"></p>
+            </div>
+         </div>
+
          <div class="user-tasks" data-project-tasks>
             <!-- test task for styling purposes -->
             <div class="user-task">
                <p class="project-title">content</p>
                <p class="task-date">today</p>
                <p class="task-priority">High</p>
-               <p class="project-location">Home</p>
+               <p class="project-location">All Tasks</p>
                <button class="remove-task-btn">Delete</button>
             </div>
          </div>

@@ -34,8 +34,8 @@ function createHomeOption() {
    const optionField = document.getElementById('taskProject');
    const homeOption = document.createElement('option');
    homeOption.value = '1';
-   homeOption.setAttribute('id', 'Home');
-   homeOption.textContent = 'Home';
+   homeOption.setAttribute('id', 'All Tasks');
+   homeOption.textContent = 'All Tasks';
    homeOption.setAttribute('selected', 'true');
    optionField.appendChild(homeOption);
 }
