@@ -24,7 +24,7 @@ function addTask() {
    submitForm.addEventListener('submit', (e) => {
       e.preventDefault();
       if (description == null || description === '') return
-      if (selectedProjectId == null || selectedProjectId == '1') {
+      if (projectId.value == null || projectId.value == '1') {
          const task = new Task(description.value, dueDate.value, priority.value, projectId.value, 'All Tasks');
          userAddedTasks.push(task);
       } else {
