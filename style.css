@@ -91,6 +91,7 @@ body {
 
 .user-tasks {
    width: 90%;
+   overflow-y: scroll;
 }
 
 .user-task {
@@ -98,6 +99,11 @@ body {
    justify-content: space-between;
    border: 1px solid black;
    padding: 2px;
+   margin-bottom: 6px;
+}
+
+.selected-task {
+   border: 1px solid lightgreen;
 }
 
 /* task form */
