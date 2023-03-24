@@ -1,12 +1,14 @@
 import { createTaskDiv } from "./DOMcontroller";
 import { selectedProjectId, userAddedProjects } from "./projects";
 
+let selectedTaskId = null;
 const userTasks = document.querySelector('[data-project-tasks]');
 
 let userAddedTasks = [];
 
 class Task {
-   constructor(description, dueDate, priority, projectId, projectName) {
+   constructor(id, description, dueDate, priority, projectId, projectName) {
+      this.id = id;
       this.description = description;
       this.dueDate = dueDate;
       this.priority = priority;
@@ -14,6 +16,18 @@ class Task {
       this.projectName = projectName;
    }
 }
+
+userTasks.addEventListener('click', e => {
+   selectedTaskId = e.target.dataset.taskId;
+
+   // description.value = selectedTaskId.children[0].innerHTML;
+   // dueDate.value = selectedTaskId.children[1].innerHTML;
+   // priority.value = selectedTaskId.children[2].innerHTML;
+   // projectId.value = selectedTaskId.children[3].innerHTML;
+   // projectName.value = selectedTaskId.children[4].innerHTML;
+   displayTasks();
+   console.log(selectedTaskId);
+})
 
 function addTask() {
    const submitForm = document.getElementById('taskForm');
@@ -24,11 +38,12 @@ function addTask() {
    submitForm.addEventListener('submit', (e) => {
       e.preventDefault();
       if (description == null || description === '') return
+      let id = Date.now().toString();
       if (projectId.value == null || projectId.value == '1') {
-         const task = new Task(description.value, dueDate.value, priority.value, projectId.value, 'All Tasks');
+         const task = new Task(id, description.value, dueDate.value, priority.value, projectId.value, 'All Tasks');
          userAddedTasks.push(task);
       } else {
-         const task = new Task(description.value, dueDate.value, priority.value, projectId.value, projectId.options[projectId.selectedIndex].id);
+         const task = new Task(id, description.value, dueDate.value, priority.value, projectId.value, projectId.options[projectId.selectedIndex].id);
          const selectedProject = userAddedProjects.find(project => project.id === projectId.value);
          selectedProject.projectTasks.push(task);
          userAddedTasks.push(task);
@@ -36,6 +51,10 @@ function addTask() {
       document.getElementById('taskForm').reset(); // resets form on submit
       displayTasks();
    });
+}
+
+function editTask() {
+   console.log()
 }
 
 function displayTasks() {
@@ -71,5 +90,6 @@ function removeUserTask() {
 export {
    addTask,
    displayTasks,
-   userAddedTasks
+   userAddedTasks,
+   selectedTaskId
 };

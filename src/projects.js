@@ -17,7 +17,7 @@ class Project {
 
 // if the clicked item is a div, set the global variable to the clicked div's projectId
 userProjects.addEventListener('click', e => {
-   if (e.target.tagName.toLowerCase() === 'div') {
+   if (e.target.tagName.toLowerCase() === 'div') { // i'm not sure we need this if statement
       selectedProjectId = e.target.dataset.projectId;
       allTasks.classList.remove('selected');
       console.log(selectedProjectId);

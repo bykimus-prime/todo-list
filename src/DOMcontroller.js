@@ -1,4 +1,5 @@
 import { selectedProjectId, userAddedProjects } from "./projects";
+import { selectedTaskId } from "./tasks";
 
 function createProjectDiv (project, index) {
    const userProjects = document.querySelector('[data-user-projects]');
@@ -45,6 +46,7 @@ function createTaskDiv (task, index) {
    // create task div
    const userTask = document.createElement('div');
    userTask.classList.add('user-task');
+   userTask.dataset.taskId = task.id;
 
    // add task info to div
    const taskTitle = document.createElement('p');
@@ -73,6 +75,11 @@ function createTaskDiv (task, index) {
    rmvTaskBtn.classList.add('remove-task-btn');
    rmvTaskBtn.textContent = 'Delete';
    userTask.appendChild(rmvTaskBtn);
+
+   // if the selected task.id matches the global variable, change class
+   if (task.id === selectedTaskId) {
+      userTask.classList.add('selected-task');
+   }
 
    // finally add task to tasks list
    userTasks.append(userTask);
