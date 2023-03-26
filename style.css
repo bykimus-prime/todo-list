@@ -272,6 +272,7 @@ form:invalid button {
 @media (max-width: 650px) {
    .navbar {
       width: 33%;
+      /* display: none; */
    }
 
    #newProjectBtn {
@@ -282,5 +283,9 @@ form:invalid button {
    .task-info-legend,
    .user-task {
       grid-template-columns: 1fr 1fr 1fr 1fr 0.7fr;
+   }
+
+   .user-task {
+      height: 50px;
    }
 }
