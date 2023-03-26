@@ -145,10 +145,25 @@ function taskBtnChanger() {
    })
 }
 
+// function hamburgerMenu() {
+//    const hamburgMenu = document.getElementById('hamburgerMenu');
+//    hamburgMenu.addEventListener('click', () => {
+//       switch (document.getElementById('navbar').style.display = 'none') {
+//          case document.getElementById('navbar').style.display = 'none':
+//             document.getElementById('navbar').style.display = 'block';
+//             break;
+//          case document.getElementById('navbar').style.display = 'block':
+//             document.getElementById('navbar').style.display = 'none';
+//             break;
+//       }
+//    })
+// }
+
 export {
    createProjectDiv,
    createTaskDiv,
    projectBtnChanger,
    taskBtnChanger,
    createHomeOption,
+   hamburgerMenu
 };

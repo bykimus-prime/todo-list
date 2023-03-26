@@ -1,8 +1,9 @@
 import { addProject } from "./projects";
 import { addTask } from "./tasks";
-import { projectBtnChanger, taskBtnChanger } from "./DOMcontroller";
+import { hamburgerMenu, projectBtnChanger, taskBtnChanger } from "./DOMcontroller";
 
 projectBtnChanger();
 taskBtnChanger();
+// hamburgerMenu();
 addProject();
 addTask();
