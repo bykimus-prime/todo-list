@@ -59,6 +59,10 @@ body {
    justify-content: space-between;
 }
 
+.remove-project-btn {
+   width: 20px;
+}
+
 /* project form */
 
 #projectForm {
@@ -79,27 +83,42 @@ body {
 }
 
 .task-info {
-   width: 90%;
+   width: 95%;
 }
 
 .task-info-legend {
    display: grid;
-   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-   justify-items: center;
+   grid-template-columns: 200px 100px 100px 100px 100px;
+   justify-content: space-between;
    padding: 2px;
 }
 
 .user-tasks {
-   width: 90%;
-   overflow-y: scroll;
+   width: 95%;
+   overflow-y: auto;
 }
 
 .user-task {
-   display: flex;
+   display: grid;
+   grid-template-columns: 200px 100px 100px 100px 100px;
    justify-content: space-between;
+   align-items: center;
    border: 1px solid black;
+   border-radius: 6px;
    padding: 2px;
    margin-bottom: 6px;
+   height: 24px;
+}
+
+.task-btns {
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+}
+
+.remove-task-btn,
+.edit-task-btn {
+   width: 20px;
 }
 
 .selected-task {
@@ -255,12 +274,13 @@ form:invalid button {
       width: 33%;
    }
 
-   .remove-project-btn {
-      height: 20px;
-   }
-
    #newProjectBtn {
       width: 80px;
       height: 45px;
+   }
+
+   .task-info-legend,
+   .user-task {
+      grid-template-columns: 1fr 1fr 1fr 1fr 0.7fr;
    }
 }
