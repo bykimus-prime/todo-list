@@ -38,4 +38,5 @@ Deployed on [GitHub Pages](https://pages.github.com/)
 
 ## Image Credits
 
-- 
+- trash can icon by Icons8
+- edit button icon by SVG Repo

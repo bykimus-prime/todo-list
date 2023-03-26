@@ -16,10 +16,10 @@ function createProjectDiv (project, index) {
    userProject.append(projectTitle);
 
    // add remove button to div
-   const rmvProjectBtn = document.createElement('button');
+   const rmvProjectBtn = document.createElement('img');
    rmvProjectBtn.setAttribute('data', index);
    rmvProjectBtn.classList.add('remove-project-btn');
-   rmvProjectBtn.textContent = 'Delete';
+   rmvProjectBtn.src = './images/trash-can.svg';
    userProject.appendChild(rmvProjectBtn);
 
    // if the selected project.id matches the global variable, change class
@@ -69,12 +69,24 @@ function createTaskDiv (task, index) {
    projectFolder.innerText = `${task.projectName}`;
    userTask.append(projectFolder);
 
+   // create and append div that buttons go into
+   const taskBtns = document.createElement('div');
+   taskBtns.classList.add('task-btns');
+   userTask.append(taskBtns);
+
+   // add edit button to div
+   const editTaskBtn = document.createElement('img');
+   editTaskBtn.setAttribute('data', index);
+   editTaskBtn.classList.add('edit-task-btn');
+   editTaskBtn.src = './images/edit-button.svg';
+   taskBtns.appendChild(editTaskBtn);
+
    // add remove button to div
-   const rmvTaskBtn = document.createElement('button');
+   const rmvTaskBtn = document.createElement('img');
    rmvTaskBtn.setAttribute('data', index);
    rmvTaskBtn.classList.add('remove-task-btn');
-   rmvTaskBtn.textContent = 'Delete';
-   userTask.appendChild(rmvTaskBtn);
+   rmvTaskBtn.src = './images/trash-can.svg';
+   taskBtns.appendChild(rmvTaskBtn);
 
    // if the selected task.id matches the global variable, change class
    if (task.id === selectedTaskId) {
