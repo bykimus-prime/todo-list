@@ -53,7 +53,6 @@ function displayProjects() {
    const taskProject = document.getElementById('taskProject');
    userProjects.textContent = '';
    taskProject.textContent = '';
-   // createHomeOption();
    userAddedProjects.forEach((project, index) => {
       createProjectDiv(project, index);
    });
@@ -76,14 +75,11 @@ function removeUserProject() {
       btn.addEventListener('click', () => {
          userAddedProjects.splice(btn.getAttribute('data'), 1);
          displayProjects();
+         displayTasks();
       });
    });
    console.log(userAddedTasks);
 }
-
-// tasksFromProject = userAddedProjects.projectId;
-// userAddedTasks = userAddedTasks.filter(task => task.projectId !== targetProject);
-// userAddedProjects = userAddedProjects.filter(project => project !== targetProject);
 
 export {
    addProject,

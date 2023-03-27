@@ -18,11 +18,7 @@ class Task {
 userTasks.addEventListener('click', e => {
    selectedTaskId = e.target.dataset.taskId;
 
-   // description.value = selectedTaskId.children[0].innerHTML;
-   // dueDate.value = selectedTaskId.children[1].innerHTML;
-   // priority.value = selectedTaskId.children[2].innerHTML;
-   // projectId.value = selectedTaskId.children[3].innerHTML;
-   // projectName.value = selectedTaskId.children[4].innerHTML;
+   
    displayTasks();
    console.log(selectedTaskId);
 })
@@ -37,15 +33,6 @@ function addTask() {
       e.preventDefault();
       if (description == null || description === '') return
       let id = Date.now().toString();
-      // if (projectId.value == null || projectId.value == '1') {
-      //    const task = new Task(id, description.value, dueDate.value, priority.value, projectId.value, 'All Tasks');
-      //    userAddedTasks.push(task);
-      // } else {
-      //    const task = new Task(id, description.value, dueDate.value, priority.value, projectId.value, projectId.options[projectId.selectedIndex].id);
-      //    const selectedProject = userAddedProjects.find(project => project.id === projectId.value);
-      //    selectedProject.projectTasks.push(task);
-      //    userAddedTasks.push(task);
-      // }
       const task = new Task(id, description.value, dueDate.value, priority.value, projectId.value, projectId.options[projectId.selectedIndex].id);
       const selectedProject = userAddedProjects.find(project => project.id === projectId.value);
       selectedProject.projectTasks.push(task);
@@ -54,9 +41,9 @@ function addTask() {
    });
 }
 
-function editTask() {
-   console.log()
-}
+// function editTask() {
+//    console.log()
+// }
 
 function displayTasks() {
    const selectedProject = userAddedProjects.find(project => project.id === selectedProjectId);
@@ -65,9 +52,6 @@ function displayTasks() {
    console.log(selectedProject);
    console.log(selectedProjectId);
    if (selectedProjectId == null || selectedProjectId == '1') {
-      // userAddedTasks.forEach((task, index) => {
-      //    createTaskDiv(task, index);
-      // });
       userAddedProjects.forEach((project) => {
          project.projectTasks.forEach((task, index) => {
             createTaskDiv(task, index);
