@@ -53,7 +53,7 @@ function displayProjects() {
    const taskProject = document.getElementById('taskProject');
    userProjects.textContent = '';
    taskProject.textContent = '';
-   createHomeOption();
+   // createHomeOption();
    userAddedProjects.forEach((project, index) => {
       createProjectDiv(project, index);
    });
@@ -88,5 +88,7 @@ function removeUserProject() {
 export {
    addProject,
    selectedProjectId,
-   userAddedProjects
+   userAddedProjects,
+   Project,
+   displayProjects
 };

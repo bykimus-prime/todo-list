@@ -31,15 +31,15 @@ function createProjectDiv (project, index) {
    userProjects.append(userProject);
 }
 
-function createHomeOption() {
-   const optionField = document.getElementById('taskProject');
-   const homeOption = document.createElement('option');
-   homeOption.value = '1';
-   homeOption.setAttribute('id', 'All Tasks');
-   homeOption.textContent = 'All Tasks';
-   homeOption.setAttribute('selected', 'true');
-   optionField.appendChild(homeOption);
-}
+// function createHomeOption() {
+//    const optionField = document.getElementById('taskProject');
+//    const homeOption = document.createElement('option');
+//    homeOption.value = '1';
+//    homeOption.setAttribute('id', 'All Tasks');
+//    homeOption.textContent = 'All Tasks';
+//    homeOption.setAttribute('selected', 'true');
+//    optionField.appendChild(homeOption);
+// }
 
 function createTaskDiv (task, index) {
    const userTasks = document.querySelector('.user-tasks');
@@ -164,6 +164,6 @@ export {
    createTaskDiv,
    projectBtnChanger,
    taskBtnChanger,
-   createHomeOption,
-   hamburgerMenu
+   // createHomeOption,
+   // hamburgerMenu
 };

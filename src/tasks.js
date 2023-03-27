@@ -4,8 +4,6 @@ import { selectedProjectId, userAddedProjects } from "./projects";
 let selectedTaskId = null;
 const userTasks = document.querySelector('[data-project-tasks]');
 
-let userAddedTasks = [];
-
 class Task {
    constructor(id, description, dueDate, priority, projectId, projectName) {
       this.id = id;
@@ -39,15 +37,18 @@ function addTask() {
       e.preventDefault();
       if (description == null || description === '') return
       let id = Date.now().toString();
-      if (projectId.value == null || projectId.value == '1') {
-         const task = new Task(id, description.value, dueDate.value, priority.value, projectId.value, 'All Tasks');
-         userAddedTasks.push(task);
-      } else {
-         const task = new Task(id, description.value, dueDate.value, priority.value, projectId.value, projectId.options[projectId.selectedIndex].id);
-         const selectedProject = userAddedProjects.find(project => project.id === projectId.value);
-         selectedProject.projectTasks.push(task);
-         userAddedTasks.push(task);
-      }
+      // if (projectId.value == null || projectId.value == '1') {
+      //    const task = new Task(id, description.value, dueDate.value, priority.value, projectId.value, 'All Tasks');
+      //    userAddedTasks.push(task);
+      // } else {
+      //    const task = new Task(id, description.value, dueDate.value, priority.value, projectId.value, projectId.options[projectId.selectedIndex].id);
+      //    const selectedProject = userAddedProjects.find(project => project.id === projectId.value);
+      //    selectedProject.projectTasks.push(task);
+      //    userAddedTasks.push(task);
+      // }
+      const task = new Task(id, description.value, dueDate.value, priority.value, projectId.value, projectId.options[projectId.selectedIndex].id);
+      const selectedProject = userAddedProjects.find(project => project.id === projectId.value);
+      selectedProject.projectTasks.push(task);
       document.getElementById('taskForm').reset(); // resets form on submit
       displayTasks();
    });
@@ -64,9 +65,14 @@ function displayTasks() {
    console.log(selectedProject);
    console.log(selectedProjectId);
    if (selectedProjectId == null || selectedProjectId == '1') {
-      userAddedTasks.forEach((task, index) => {
-         createTaskDiv(task, index);
-      });
+      // userAddedTasks.forEach((task, index) => {
+      //    createTaskDiv(task, index);
+      // });
+      userAddedProjects.forEach((project) => {
+         project.projectTasks.forEach((task, index) => {
+            createTaskDiv(task, index);
+         })
+      })
    } else {
       selectedProject.projectTasks.forEach((task, index) => {
          createTaskDiv(task, index);
@@ -81,7 +87,12 @@ function removeUserTask() {
    const rmvTaskBtn = document.querySelectorAll('.remove-task-btn');
    rmvTaskBtn.forEach((btn) => {
       btn.addEventListener('click', () => {
-         userAddedTasks.splice(btn.getAttribute('data'), 1);
+         userAddedProjects.forEach((project) => {
+            project.projectTasks.forEach((task) => {
+               task.splice(btn.getAttribute('data'), 1);
+            })
+         })
+         // userAddedTasks.splice(btn.getAttribute('data'), 1);
          displayTasks();
       });
    });
@@ -90,6 +101,6 @@ function removeUserTask() {
 export {
    addTask,
    displayTasks,
-   userAddedTasks,
-   selectedTaskId
+   selectedTaskId,
+   Task
 };
