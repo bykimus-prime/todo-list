@@ -74,6 +74,7 @@ function createTaskDiv (task, index) {
    // add remove button to div
    const rmvTaskBtn = document.createElement('img');
    rmvTaskBtn.setAttribute('data', index);
+   rmvTaskBtn.dataset.taskProjectId = task.projectId;
    rmvTaskBtn.classList.add('remove-task-btn');
    rmvTaskBtn.src = './images/trash-can.svg';
    taskBtns.appendChild(rmvTaskBtn);

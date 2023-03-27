@@ -18,7 +18,6 @@ class Task {
 userTasks.addEventListener('click', e => {
    selectedTaskId = e.target.dataset.taskId;
 
-   
    displayTasks();
    console.log(selectedTaskId);
 })
@@ -70,13 +69,11 @@ function displayTasks() {
 function removeUserTask() {
    const rmvTaskBtn = document.querySelectorAll('.remove-task-btn');
    rmvTaskBtn.forEach((btn) => {
-      btn.addEventListener('click', () => {
-         userAddedProjects.forEach((project) => {
-            project.projectTasks.forEach((task) => {
-               task.splice(btn.getAttribute('data'), 1);
-            })
-         })
-         // userAddedTasks.splice(btn.getAttribute('data'), 1);
+      btn.addEventListener('click', (e) => {
+         const matchingTaskId = e.target.dataset.taskProjectId;
+         console.log(matchingTaskId);
+         const selectedProject = userAddedProjects.find(project => project.id === matchingTaskId);
+         selectedProject.projectTasks.splice(btn.getAttribute('data'), 1);
          displayTasks();
       });
    });

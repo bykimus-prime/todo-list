@@ -26,7 +26,7 @@ userProjects.addEventListener('click', e => {
    }
 })
 
-// show all tasks when clicking the all tasks div
+// sets selected project id and other things to show all tasks when clicking the all tasks div
 allTasks.addEventListener('click', e => {
    selectedProjectId = '1';
    allTasks.classList.add('selected');
