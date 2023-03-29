@@ -1,4 +1,4 @@
-import { createTaskDiv } from "./DOMcontroller";
+import { createTaskDiv, taskBtnChanger } from "./DOMcontroller";
 import { selectedProjectId, userAddedProjects } from "./projects";
 
 let selectedTaskId = null;
@@ -32,24 +32,62 @@ function addTask() {
       e.preventDefault();
       if (description == null || description === '') return
       let id = Date.now().toString();
-      const task = new Task(id, description.value, dueDate.value, priority.value, projectId.value, projectId.options[projectId.selectedIndex].id);
-      const selectedProject = userAddedProjects.find(project => project.id === projectId.value);
-      selectedProject.projectTasks.push(task);
+      pushTask(id, description.value, dueDate.value, priority.value, projectId.value, projectId.options[projectId.selectedIndex].id);
       document.getElementById('taskForm').reset(); // resets form on submit
       displayTasks();
    });
 }
 
+function pushTask(id, description, dueDate, priority, projectId, projectName) {
+   const task = new Task(id, description, dueDate, priority, projectId, projectName);
+   const selectedProject = userAddedProjects.find(project => project.id === projectId);
+   selectedProject.projectTasks.push(task);
+}
+
 // function editTask() {
-//    console.log()
+//    const editTaskBtn = document.querySelectorAll('.edit-task-btn');
+//    const submitEditForm = document.getElementById('editTaskForm');
+//    editTaskBtn.forEach((btn) => {
+//       btn.addEventListener('click', (e) => {
+//          taskBtnChanger().showEditTaskForm();
+
+//          const matchingTaskId = e.target.dataset.taskProjectId;
+//          const selectedProject = userAddedProjects.find(project => project.id === matchingTaskId);
+//          console.log('selected project:', selectedProject);
+
+//          selectedTaskId = e.target.dataset.taskId;
+//          console.log('selected task id:', selectedTaskId);
+
+//          const selectedTask = selectedProject.projectTasks.find(task => task.id === selectedTaskId);
+//          console.log('here is task to work with:', selectedTask);
+
+//          let description = selectedTask.description;
+//          let dueDate = selectedTask.dueDate;
+//          let priority = selectedTask.priority;
+//          let projectName = selectedTask.projectName;
+//          console.log('here is task info:', description, dueDate, priority, projectName);
+         
+//          submitEditForm.addEventListener('submit', (e) => {
+//             e.preventDefault();
+//             if (description == null || description === '') return
+//             let id = Date.now().toString();
+//             pushTask(id, description.value, dueDate.value, priority.value, projectId.value, projectId.options[projectId.selectedIndex].id);
+//             document.getElementById('taskForm').reset(); // resets form on submit
+//             displayTasks();
+//          });
+
+//          const editDescription = document.querySelector('#taskDescription');
+//          const editDueDate = document.querySelector('#taskDueDate');
+//          const editPriority = document.querySelector('#priorityLevel');
+//          const editProjectId = document.getElementById('taskProject');
+//       });
+//    });
 // }
 
 function displayTasks() {
    const selectedProject = userAddedProjects.find(project => project.id === selectedProjectId);
    const userTasks = document.querySelector('.user-tasks');
    userTasks.textContent = '';
-   console.log(selectedProject);
-   console.log(selectedProjectId);
    if (selectedProjectId == null || selectedProjectId == '1') {
       userAddedProjects.forEach((project) => {
          project.projectTasks.forEach((task, index) => {
@@ -61,8 +99,7 @@ function displayTasks() {
          createTaskDiv(task, index);
       });
    }
-   console.log(userAddedProjects);
-   console.log(selectedProjectId);
+   editTask();
    removeUserTask();
 }
 
@@ -71,7 +108,6 @@ function removeUserTask() {
    rmvTaskBtn.forEach((btn) => {
       btn.addEventListener('click', (e) => {
          const matchingTaskId = e.target.dataset.taskProjectId;
-         console.log(matchingTaskId);
          const selectedProject = userAddedProjects.find(project => project.id === matchingTaskId);
          selectedProject.projectTasks.splice(btn.getAttribute('data'), 1);
          displayTasks();

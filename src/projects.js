@@ -1,5 +1,5 @@
-import { createProjectDiv, createHomeOption } from "./DOMcontroller";
-import { displayTasks, userAddedTasks } from "./tasks";
+import { createProjectDiv } from "./DOMcontroller";
+import { displayTasks } from "./tasks";
 
 let selectedProjectId = null
 const userProjects = document.querySelector('[data-user-projects]');
@@ -20,7 +20,6 @@ userProjects.addEventListener('click', e => {
    if (e.target.tagName.toLowerCase() === 'div') { // i'm not sure we need this if statement
       selectedProjectId = e.target.dataset.projectId;
       allTasks.classList.remove('selected');
-      console.log(selectedProjectId);
       displayProjects();
       displayTasks();
    }
@@ -32,7 +31,6 @@ allTasks.addEventListener('click', e => {
    allTasks.classList.add('selected');
    displayProjects();
    displayTasks();
-   console.log(selectedProjectId);
 })
 
 function addProject() {
@@ -51,8 +49,10 @@ function addProject() {
 
 function displayProjects() {
    const taskProject = document.getElementById('taskProject');
+   const editTaskProject = document.getElementById('editTaskProject');
    userProjects.textContent = '';
    taskProject.textContent = '';
+   editTaskProject.textContent = '';
    userAddedProjects.forEach((project, index) => {
       createProjectDiv(project, index);
    });
@@ -65,7 +65,13 @@ function displayProjects() {
       taskProject.appendChild(newOption);
    });
 
-   console.log(userAddedProjects);
+   userAddedProjects.forEach((project) => {
+      let newOption = document.createElement('option');
+      newOption.value = project.id;
+      newOption.innerText = project.projectTitle;
+      newOption.id = project.projectTitle;
+      editTaskProject.appendChild(newOption);
+   });
    removeUserProject();
 }
 
@@ -78,7 +84,6 @@ function removeUserProject() {
          displayTasks();
       });
    });
-   console.log(userAddedTasks);
 }
 
 export {

@@ -67,6 +67,8 @@ function createTaskDiv (task, index) {
    // add edit button to div
    const editTaskBtn = document.createElement('img');
    editTaskBtn.setAttribute('data', index);
+   editTaskBtn.dataset.taskId = task.id;
+   editTaskBtn.dataset.taskProjectId = task.projectId;
    editTaskBtn.classList.add('edit-task-btn');
    editTaskBtn.src = './images/edit-button.svg';
    taskBtns.appendChild(editTaskBtn);
@@ -111,29 +113,67 @@ function projectBtnChanger() {
 
 function taskBtnChanger() {
    const showTaskFormBtn = document.getElementById('taskFormDispBtn');
+   const showEditTaskBtn = document.querySelectorAll('.edit-task-btn');
    const taskSubmitBtn = document.getElementById('task-submit-btn');
+   const editTaskSubmitBtn = document.getElementById('edit-task-submit-btn');
    const taskCancelBtn = document.getElementById('task-cancel-btn');
-   const modal = document.querySelector('.modal');
+   const editTaskCancelBtn = document.getElementById('edit-task-cancel-btn');
+   const editTaskModal = document.querySelector('.edit-task-modal');
+   const newTaskModal = document.querySelector('.new-task-modal');
    const overlay = document.querySelector('.overlay');
 
-   const showTaskForm = () => {
-      modal.classList.add('active');
+   // const showNewTaskForm = () => {
+   //    newTaskModal.classList.add('active');
+   //    overlay.classList.add('active');
+   //    document.getElementById('taskDescription').focus();
+   // }
+
+   // const showEditTaskForm = () => {
+   //    editTaskModal.classList.add('active');
+   //    overlay.classList.add('active');
+   //    document.getElementById('editTaskDescription').focus();
+   // }
+
+   // const closeModal = () => {
+   //    newTaskModal.classList.remove('active');
+   //    editTaskModal.classList.remove('active');
+   //    overlay.classList.remove('active');
+   // }
+
+   function showNewTaskForm() {
+      newTaskModal.classList.add('active');
       overlay.classList.add('active');
       document.getElementById('taskDescription').focus();
    }
 
-   const closeModal = () => {
-      modal.classList.remove('active');
+   function showEditTaskForm() {
+      editTaskModal.classList.add('active');
+      overlay.classList.add('active');
+      document.getElementById('editTaskDescription').focus();
+   }
+
+   function closeModal() {
+      newTaskModal.classList.remove('active');
+      editTaskModal.classList.remove('active');
       overlay.classList.remove('active');
    }
-   showTaskFormBtn.onclick = showTaskForm;
+
+   showTaskFormBtn.onclick = showNewTaskForm;
+
    taskSubmitBtn.onclick = closeModal;
+   editTaskSubmitBtn.onclick = closeModal;
    overlay.onclick = closeModal;
 
    taskCancelBtn.addEventListener('click', () => {
       closeModal();
       document.getElementById('taskForm').reset();
    })
+
+   editTaskCancelBtn.addEventListener('click', () => {
+      closeModal();
+      document.getElementById('editTaskForm').reset();
+   })
+   return { showEditTaskForm }
 }
 
 // function hamburgerMenu() {
