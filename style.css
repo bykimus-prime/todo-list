@@ -184,6 +184,7 @@ body {
 }
 
 #task-submit-btn,
+#edit-task-submit-btn,
 #project-submit-btn {
    width: 40px;
    height: 25px;
@@ -195,6 +196,7 @@ body {
 }
 
 #task-submit-btn:hover,
+#edit-task-submit-btn:hover,
 #project-submit-btn:hover {
    filter: brightness(95%);
 }
@@ -205,6 +207,7 @@ form:invalid button {
 }
 
 #task-cancel-btn,
+#edit-task-cancel-btn,
 #project-cancel-btn {
    width: 50px;
    height: 25px;
@@ -216,6 +219,7 @@ form:invalid button {
 }
 
 #task-cancel-btn:hover,
+#edit-task-cancel-btn:hover,
 #project-cancel-btn:hover {
    filter: brightness(95%);
 }
@@ -233,7 +237,8 @@ form:invalid button {
 
 /* modal */
 
-.modal {
+.new-task-modal,
+.edit-task-modal {
    position: fixed;
    z-index: 1;
    top: 30%;
@@ -249,7 +254,8 @@ form:invalid button {
    align-items: center;
 }
 
-.modal.active {
+.new-task-modal.active,
+.edit-task-modal.active {
    transform: translate(-50%, -50%) scale(1);
 }
 

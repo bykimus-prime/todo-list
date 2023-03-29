@@ -22,13 +22,7 @@
          </div>
          <div class="projects-list">
             <h3>Projects</h3>
-            <div class="user-projects" data-user-projects>
-               <!-- test project for styling purposes -->
-               <div class="user-project">
-                  <p class="project-title">test project</p>
-                  <img class="remove-project-btn" src="./images/trash-can.svg"></img>
-               </div>
-            </div>
+            <div class="user-projects" data-user-projects></div>
             <div id="project-btn-form-space">
                <button id="newProjectBtn">Add New Project</button>
                <form id="projectForm" data-new-project-form>
@@ -45,10 +39,9 @@
             </div>
          </div>
       </div>
-
       <div class="content-display">
          <button id="taskFormDispBtn">Add New Task</button>
-         <div class="modal">
+         <div class="new-task-modal">
             <form id="taskForm" data-new-task-form>
                <div class="task-form-row">
                   <label class="task-description-label" for="description">Task:</label>
@@ -80,6 +73,37 @@
             </form>
          </div>
 
+         <div class="edit-task-modal">
+            <form id="editTaskForm" data-edit-task-form>
+               <div class="task-form-row">
+                  <label class="edit-task-description-label" for="description">Task:</label>
+                  <input type="text" id="editTaskDescription" name="description" placeholder="Task..." required>
+               </div>
+               <div class="task-form-row">
+                  <label class="edit-task-dueDate-label" for="dueDate">Due Date:</label>
+                  <input type="text" id="editTaskDueDate" name="dueDate" placeholder="date" required>
+               </div>
+               <div class="task-form-row">
+                  <label class="edit-task-priority-label" for="priority">Priority:</label>
+                  <select id="editPriorityLevel" name="priorityLevel">
+                     <option value="High" selected>High</option>
+                     <option value="Medium">Medium</option>
+                     <option value="Low">Low</option>
+                  </select>
+               </div>
+               <div class="task-form-row">
+                  <label class="edit-task-project-label" for="taskProject">Project:</label>
+                  <select id="editTaskProject" name="taskProject" required></select>
+               </div>
+               <div class="task-form-row">
+                  <p>*All fields required.</p>
+               </div>
+               <div class="task-form-btns">
+                  <button id="edit-task-submit-btn" type="submit" value="Add">Edit</button>
+                  <input id="edit-task-cancel-btn" type="button" value="Cancel"></input>
+               </div>
+            </form>
+         </div>
          <div class="task-info">
             <div class="task-info-legend">
                <p class="task-legend">Task</p>
@@ -89,20 +113,7 @@
                <p class="space-legend"></p>
             </div>
          </div>
-
-         <div class="user-tasks" data-project-tasks>
-            <!-- test task for styling purposes -->
-            <div class="user-task">
-               <p class="project-title">content</p>
-               <p class="task-date">today</p>
-               <p class="task-priority">High</p>
-               <p class="project-location">All Tasks</p>
-               <div class="task-btns">
-                  <img class="edit-task-btn" src="./images/edit-button.svg"></img>
-                  <img class="remove-task-btn" src="./images/trash-can.svg"></img>
-               </div>
-            </div>
-         </div>
+         <div class="user-tasks" data-project-tasks></div>
       </div>
    </div>
    <div class="overlay"></div>
