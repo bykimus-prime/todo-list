@@ -17,7 +17,6 @@ class Task {
 
 userTasks.addEventListener('click', e => {
    selectedTaskId = e.target.dataset.taskId;
-
    displayTasks();
 })
 
@@ -51,11 +50,14 @@ function editTask() {
          taskBtnChanger().showEditTaskForm();
 
          const matchingTaskId = e.target.dataset.taskProjectId;
-         const selectedProject = userAddedProjects.find(project => project.id === matchingTaskId);
+         const matchingProject = userAddedProjects.find(project => project.id === matchingTaskId);
          selectedTaskId = e.target.dataset.taskId;
-         const selectedTask = selectedProject.projectTasks.find(task => task.id === selectedTaskId);
+         const selectedTask = matchingProject.projectTasks.find(task => task.id === selectedTaskId);
+         console.log('matchingProject:', matchingProject);
+         console.log('selectedTask:', selectedTask);
 
          // gets info from selected task
+         let id = selectedTask.id;
          let description = selectedTask.description;
          let dueDate = selectedTask.dueDate;
          let priority = selectedTask.priority;
@@ -82,12 +84,27 @@ function editTask() {
             // takes source object properties and copies to a target object. returns the modified object
             const source = { description: editDescription.value, dueDate: editDueDate.value, priority: editPriority.value, projectId: editProjectId.value, projectName: editProjectId.options[editProjectId.selectedIndex].id };
             const target = selectedTask;
-            Object.assign(target, source);
-
-            // find a way to change project folders if edited task is put into a new folder
-            // const selectedProject = userAddedProjects.find(project => project.id === projectId);
-            // selectedProject.projectTasks.push(task);
-
+            console.log('editProjectId:', editProjectId.value);
+            console.log('selectedTask.projectId:', selectedTask.projectId);
+            // if edited task projectId doesn't match current projectId, push task to new project, delete copy from old project
+            if (editProjectId.value !== selectedTask.projectId) {
+               const task = new Task(id, editDescription.value, editDueDate.value, editPriority.value, editProjectId.value, editProjectId.options[editProjectId.selectedIndex].id);
+               const selectedProject = userAddedProjects.find(project => project.id === editProjectId.value);
+               selectedProject.projectTasks.push(task);
+               // matchingProject.projectTasks.splice(selectedTask, 1);
+               // filters duplicate task objects out of the array via unique id of each task
+               const unique = [];
+               for (const item of selectedProject.projectTasks) {
+                  const isDuplicate = unique.find((obj) => obj.id === item.id);
+                  if (!isDuplicate) {
+                     unique.push(item);
+                  }
+               }
+               // set the projectTasks array to the new filtered array
+               selectedProject.projectTasks = unique;
+            } else {
+               Object.assign(target, source);
+            }
             document.getElementById('taskForm').reset();
             displayTasks();
          });
