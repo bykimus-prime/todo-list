@@ -91,7 +91,10 @@ function editTask() {
                const task = new Task(id, editDescription.value, editDueDate.value, editPriority.value, editProjectId.value, editProjectId.options[editProjectId.selectedIndex].id);
                const selectedProject = userAddedProjects.find(project => project.id === editProjectId.value);
                selectedProject.projectTasks.push(task);
-               // matchingProject.projectTasks.splice(selectedTask, 1);
+               // filter out the selected task from the project it was in, in effect deleting it
+               const filtered = matchingProject.projectTasks.filter((task) => task != selectedTask);
+               matchingProject.projectTasks = filtered;
+               matchingProject.projectTasks
                // filters duplicate task objects out of the array via unique id of each task
                const unique = [];
                for (const item of selectedProject.projectTasks) {
