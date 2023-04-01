@@ -26,6 +26,9 @@ In order to setup and work on this project on your own, you will need to:
 3. The package.json should be configured so that distribution files can be produced using:  
 `npm run build` or your preferred method.
 
+4. I used date-fns for date manipulation in javascript and other handy functions. For webpack:
+`npm install date-fns --save`
+
 ### Usage
 <!-- ##### Once you are on the homepage, you have three links in the navbar
 - **Home** - To return to the homepage

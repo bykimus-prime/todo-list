@@ -17,8 +17,8 @@
       <div class="navbar" id="navbar">
          <div class="default-projects">
             <div class="all-tasks" data-project-id="1">All Tasks</div>
-            <div class="today-tasks">Today</div>
-            <div class="week-tasks">This Week</div>
+            <div class="today-tasks" data-project-id="today">Today</div>
+            <div class="week-tasks" data-project-id="week">This Week</div>
          </div>
          <div class="projects-list">
             <h3>Projects</h3>
@@ -49,7 +49,7 @@
                </div>
                <div class="task-form-row">
                   <label class="task-dueDate-label" for="dueDate">Due Date:</label>
-                  <input type="text" id="taskDueDate" name="dueDate" placeholder="date" required>
+                  <input type="date" id="taskDueDate" name="dueDate" max="9999-12-31">
                </div>
                <div class="task-form-row">
                   <label class="task-priority-label" for="priority">Priority:</label>
@@ -81,7 +81,7 @@
                </div>
                <div class="task-form-row">
                   <label class="edit-task-dueDate-label" for="dueDate">Due Date:</label>
-                  <input type="text" id="editTaskDueDate" name="dueDate" placeholder="date" required>
+                  <input type="date" id="editTaskDueDate" name="dueDate" max="9999-12-31">
                </div>
                <div class="task-form-row">
                   <label class="edit-task-priority-label" for="priority">Priority:</label>

@@ -1,5 +1,6 @@
 import { createTaskDiv, taskBtnChanger } from "./DOMcontroller";
 import { selectedProjectId, userAddedProjects } from "./projects";
+import { format, isEqual, addDays, subDays, isWithinInterval } from "date-fns";
 
 let selectedTaskId = null;
 const userTasks = document.querySelector('[data-project-tasks]');
@@ -119,10 +120,36 @@ function displayTasks() {
    const selectedProject = userAddedProjects.find(project => project.id === selectedProjectId);
    const userTasks = document.querySelector('.user-tasks');
    userTasks.textContent = '';
+   // displays all tasks
    if (selectedProjectId == null || selectedProjectId == '1') {
       userAddedProjects.forEach((project) => {
          project.projectTasks.forEach((task, index) => {
             createTaskDiv(task, index);
+         })
+      })
+   // displays tasks that have dueDate within today
+   } else if (selectedProjectId == 'today') {
+      let today = Date.parse(format(new Date(), "yyyy-MM-dd")); // format date correctly then parse
+      console.log('today', today);
+      userAddedProjects.forEach((project) => {
+         project.projectTasks.forEach((task, index) => {
+            let date = Date.parse(task.dueDate);
+            console.log('date', date);
+            if (isEqual(date, today)) { // checks if dates are equal. task.dueDate doesn't need format
+               createTaskDiv(task, index);
+            }
+         })
+      })
+   // displays tasks that have dueDate within next week
+   } else if (selectedProjectId == 'week') {
+      userAddedProjects.forEach((project) => {
+         project.projectTasks.forEach((task, index) => {
+            let date = Date.parse(task.dueDate); // parse dueDate value to string
+            console.log(date);
+            if (nextWeek(date)) {
+               console.log('nextweek', nextWeek(date))
+               createTaskDiv(task, index);
+            }
          })
       })
    } else {
@@ -133,6 +160,15 @@ function displayTasks() {
    console.log(userAddedProjects);
    editTask();
    removeUserTask();
+}
+
+function nextWeek(dueDate) {
+   let nextWeek = addDays(new Date(), 7); // value on right adds days to date
+   let today = subDays(new Date(), 1); // value on right minuses days from date, because real today wasn't being included in interval
+   return isWithinInterval(dueDate, { // checks if date is within interval
+      start: today,
+      end: nextWeek
+   });
 }
 
 function removeUserTask() {

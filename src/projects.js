@@ -4,6 +4,8 @@ import { displayTasks } from "./tasks";
 let selectedProjectId = null
 const userProjects = document.querySelector('[data-user-projects]');
 const allTasks = document.querySelector('.all-tasks');
+const todayTasks = document.querySelector('.today-tasks');
+const weekTasks = document.querySelector('.week-tasks');
 
 let userAddedProjects = [];
 
@@ -25,12 +27,29 @@ userProjects.addEventListener('click', e => {
    }
 })
 
-// sets selected project id and other things to show all tasks when clicking the all tasks div
+// sets selected project id and other things to show specified tasks when clicking the related div
 allTasks.addEventListener('click', e => {
    selectedProjectId = '1';
    allTasks.classList.add('selected');
    displayProjects();
    displayTasks();
+   console.log(selectedProjectId);
+})
+
+todayTasks.addEventListener('click', e => {
+   selectedProjectId = 'today';
+   todayTasks.classList.add('selected');
+   displayProjects();
+   displayTasks();
+   console.log(selectedProjectId);
+})
+
+weekTasks.addEventListener('click', e => {
+   selectedProjectId = 'week';
+   weekTasks.classList.add('selected');
+   displayProjects();
+   displayTasks();
+   console.log(selectedProjectId);
 })
 
 function addProject() {
