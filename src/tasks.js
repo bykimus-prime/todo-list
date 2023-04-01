@@ -1,7 +1,6 @@
 import { createTaskDiv, taskBtnChanger } from "./DOMcontroller";
 import { userAddedProjects } from "./projects";
-import { selectedProjectId } from "./staticListeners";
-import { selectedTaskId } from "./staticListeners";
+import { selectedProjectId, selectedTaskId } from "./staticListeners";
 import { format, isEqual, addDays, subDays, isWithinInterval } from "date-fns";
 
 class Task {

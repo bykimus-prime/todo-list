@@ -59,15 +59,20 @@ function removeUserProject() {
    rmvProjectBtn.forEach((btn) => {
       btn.addEventListener('click', () => {
          userAddedProjects.splice(btn.getAttribute('data'), 1);
-         displayProjects();
-         displayTasks();
+         render();
       });
    });
+}
+
+function render() {
+   displayProjects();
+   displayTasks();
 }
 
 export {
    addProject,
    userAddedProjects,
    Project,
-   displayProjects
+   displayProjects,
+   render
 };

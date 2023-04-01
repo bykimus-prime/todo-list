@@ -1,5 +1,5 @@
-import { displayProjects } from "./projects";
 import { displayTasks } from "./tasks";
+import { render } from "./projects";
 
 const userProjects = document.querySelector('[data-user-projects]');
 const userTasks = document.querySelector('[data-project-tasks]');
@@ -17,8 +17,7 @@ userProjects.addEventListener('click', e => {
       allTasks.classList.remove('selected');
       todayTasks.classList.remove('selected');
       weekTasks.classList.remove('selected');
-      displayProjects();
-      displayTasks();
+      render();
    }
 })
 
@@ -28,8 +27,7 @@ allTasks.addEventListener('click', e => {
    allTasks.classList.add('selected');
    todayTasks.classList.remove('selected');
    weekTasks.classList.remove('selected');
-   displayProjects();
-   displayTasks();
+   render();
 })
 
 todayTasks.addEventListener('click', e => {
@@ -37,8 +35,7 @@ todayTasks.addEventListener('click', e => {
    todayTasks.classList.add('selected');
    allTasks.classList.remove('selected');
    weekTasks.classList.remove('selected');
-   displayProjects();
-   displayTasks();
+   render();
 })
 
 weekTasks.addEventListener('click', e => {
@@ -46,8 +43,7 @@ weekTasks.addEventListener('click', e => {
    weekTasks.classList.add('selected');
    allTasks.classList.remove('selected');
    todayTasks.classList.remove('selected');
-   displayProjects();
-   displayTasks();
+   render();
 })
 
 userTasks.addEventListener('click', e => {
