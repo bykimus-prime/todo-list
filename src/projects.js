@@ -22,6 +22,8 @@ userProjects.addEventListener('click', e => {
    if (e.target.tagName.toLowerCase() === 'div') { // i'm not sure we need this if statement
       selectedProjectId = e.target.dataset.projectId;
       allTasks.classList.remove('selected');
+      todayTasks.classList.remove('selected');
+      weekTasks.classList.remove('selected');
       displayProjects();
       displayTasks();
    }
@@ -31,6 +33,8 @@ userProjects.addEventListener('click', e => {
 allTasks.addEventListener('click', e => {
    selectedProjectId = '1';
    allTasks.classList.add('selected');
+   todayTasks.classList.remove('selected');
+   weekTasks.classList.remove('selected');
    displayProjects();
    displayTasks();
    console.log(selectedProjectId);
@@ -39,6 +43,8 @@ allTasks.addEventListener('click', e => {
 todayTasks.addEventListener('click', e => {
    selectedProjectId = 'today';
    todayTasks.classList.add('selected');
+   allTasks.classList.remove('selected');
+   weekTasks.classList.remove('selected');
    displayProjects();
    displayTasks();
    console.log(selectedProjectId);
@@ -47,6 +53,8 @@ todayTasks.addEventListener('click', e => {
 weekTasks.addEventListener('click', e => {
    selectedProjectId = 'week';
    weekTasks.classList.add('selected');
+   allTasks.classList.remove('selected');
+   todayTasks.classList.remove('selected');
    displayProjects();
    displayTasks();
    console.log(selectedProjectId);
