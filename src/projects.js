@@ -1,12 +1,6 @@
 import { createProjectDiv } from "./DOMcontroller";
 import { displayTasks } from "./tasks";
 
-let selectedProjectId = null
-const userProjects = document.querySelector('[data-user-projects]');
-const allTasks = document.querySelector('.all-tasks');
-const todayTasks = document.querySelector('.today-tasks');
-const weekTasks = document.querySelector('.week-tasks');
-
 let userAddedProjects = [];
 
 class Project {
@@ -16,49 +10,6 @@ class Project {
       this.projectTasks = [];
    }
 }
-
-// if the clicked item is a div, set the global variable to the clicked div's projectId
-userProjects.addEventListener('click', e => {
-   if (e.target.tagName.toLowerCase() === 'div') { // i'm not sure we need this if statement
-      selectedProjectId = e.target.dataset.projectId;
-      allTasks.classList.remove('selected');
-      todayTasks.classList.remove('selected');
-      weekTasks.classList.remove('selected');
-      displayProjects();
-      displayTasks();
-   }
-})
-
-// sets selected project id and other things to show specified tasks when clicking the related div
-allTasks.addEventListener('click', e => {
-   selectedProjectId = '1';
-   allTasks.classList.add('selected');
-   todayTasks.classList.remove('selected');
-   weekTasks.classList.remove('selected');
-   displayProjects();
-   displayTasks();
-   console.log(selectedProjectId);
-})
-
-todayTasks.addEventListener('click', e => {
-   selectedProjectId = 'today';
-   todayTasks.classList.add('selected');
-   allTasks.classList.remove('selected');
-   weekTasks.classList.remove('selected');
-   displayProjects();
-   displayTasks();
-   console.log(selectedProjectId);
-})
-
-weekTasks.addEventListener('click', e => {
-   selectedProjectId = 'week';
-   weekTasks.classList.add('selected');
-   allTasks.classList.remove('selected');
-   todayTasks.classList.remove('selected');
-   displayProjects();
-   displayTasks();
-   console.log(selectedProjectId);
-})
 
 function addProject() {
    const submitForm = document.querySelector('[data-new-project-form]');
@@ -75,6 +26,7 @@ function addProject() {
 }
 
 function displayProjects() {
+   const userProjects = document.querySelector('[data-user-projects]');
    const taskProject = document.getElementById('taskProject');
    const editTaskProject = document.getElementById('editTaskProject');
    userProjects.textContent = '';
@@ -115,7 +67,6 @@ function removeUserProject() {
 
 export {
    addProject,
-   selectedProjectId,
    userAddedProjects,
    Project,
    displayProjects

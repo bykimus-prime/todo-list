@@ -1,5 +1,5 @@
-import { selectedProjectId } from "./projects";
-import { selectedTaskId } from "./tasks";
+import { selectedProjectId } from "./staticListeners";
+import { selectedTaskId } from "./staticListeners";
 
 function createProjectDiv (project, index) {
    const userProjects = document.querySelector('[data-user-projects]');

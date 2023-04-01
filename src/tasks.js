@@ -1,9 +1,8 @@
 import { createTaskDiv, taskBtnChanger } from "./DOMcontroller";
-import { selectedProjectId, userAddedProjects } from "./projects";
+import { userAddedProjects } from "./projects";
+import { selectedProjectId } from "./staticListeners";
+import { selectedTaskId } from "./staticListeners";
 import { format, isEqual, addDays, subDays, isWithinInterval } from "date-fns";
-
-let selectedTaskId = null;
-const userTasks = document.querySelector('[data-project-tasks]');
 
 class Task {
    constructor(id, description, dueDate, priority, projectId, projectName) {
@@ -15,11 +14,6 @@ class Task {
       this.projectName = projectName;
    }
 }
-
-userTasks.addEventListener('click', e => {
-   selectedTaskId = e.target.dataset.taskId;
-   displayTasks();
-})
 
 function addTask() {
    const submitForm = document.getElementById('taskForm');
@@ -54,8 +48,6 @@ function editTask() {
          const matchingProject = userAddedProjects.find(project => project.id === matchingTaskId);
          selectedTaskId = e.target.dataset.taskId;
          const selectedTask = matchingProject.projectTasks.find(task => task.id === selectedTaskId);
-         console.log('matchingProject:', matchingProject);
-         console.log('selectedTask:', selectedTask);
 
          // gets info from selected task
          let id = selectedTask.id;
@@ -85,8 +77,6 @@ function editTask() {
             // takes source object properties and copies to a target object. returns the modified object
             const source = { description: editDescription.value, dueDate: editDueDate.value, priority: editPriority.value, projectId: editProjectId.value, projectName: editProjectId.options[editProjectId.selectedIndex].id };
             const target = selectedTask;
-            console.log('editProjectId:', editProjectId.value);
-            console.log('selectedTask.projectId:', selectedTask.projectId);
             // if edited task projectId doesn't match current projectId, push task to new project, delete copy from old project
             if (editProjectId.value !== selectedTask.projectId) {
                const task = new Task(id, editDescription.value, editDueDate.value, editPriority.value, editProjectId.value, editProjectId.options[editProjectId.selectedIndex].id);
@@ -130,11 +120,9 @@ function displayTasks() {
    // displays tasks that have dueDate within today
    } else if (selectedProjectId == 'today') {
       let today = Date.parse(format(new Date(), "yyyy-MM-dd")); // format date correctly then parse
-      console.log('today', today);
       userAddedProjects.forEach((project) => {
          project.projectTasks.forEach((task, index) => {
             let date = Date.parse(task.dueDate);
-            console.log('date', date);
             if (isEqual(date, today)) { // checks if dates are equal. task.dueDate doesn't need format
                createTaskDiv(task, index);
             }
@@ -145,9 +133,7 @@ function displayTasks() {
       userAddedProjects.forEach((project) => {
          project.projectTasks.forEach((task, index) => {
             let date = Date.parse(task.dueDate); // parse dueDate value to string
-            console.log(date);
             if (nextWeek(date)) {
-               console.log('nextweek', nextWeek(date))
                createTaskDiv(task, index);
             }
          })
@@ -157,7 +143,6 @@ function displayTasks() {
          createTaskDiv(task, index);
       });
    }
-   console.log(userAddedProjects);
    editTask();
    removeUserTask();
 }
@@ -186,6 +171,5 @@ function removeUserTask() {
 export {
    addTask,
    displayTasks,
-   selectedTaskId,
    Task
 };
