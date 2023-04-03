@@ -43,3 +43,4 @@ Deployed on [GitHub Pages](https://pages.github.com/)
 
 - trash can icon by Icons8
 - edit button icon by SVG Repo
+- burger menu icon by SVG Repo

@@ -63,6 +63,15 @@ function createTaskDiv (task, index) {
    taskBtns.classList.add('task-btns');
    userTask.append(taskBtns);
 
+   // add view button to div
+   const viewTaskBtn = document.createElement('img');
+   viewTaskBtn.setAttribute('data', index);
+   viewTaskBtn.dataset.taskId = task.id;
+   viewTaskBtn.dataset.taskProjectId = task.projectId;
+   viewTaskBtn.classList.add('view-task-btn');
+   viewTaskBtn.src = './images/magnifying-glass-plus.svg';
+   taskBtns.appendChild(viewTaskBtn);
+
    // add edit button to div
    const editTaskBtn = document.createElement('img');
    editTaskBtn.setAttribute('data', index);
@@ -112,7 +121,6 @@ function projectBtnChanger() {
 
 function taskBtnChanger() {
    const showTaskFormBtn = document.getElementById('taskFormDispBtn');
-   const showEditTaskBtn = document.querySelectorAll('.edit-task-btn');
    const taskSubmitBtn = document.getElementById('task-submit-btn');
    const editTaskSubmitBtn = document.getElementById('edit-task-submit-btn');
    const taskCancelBtn = document.getElementById('task-cancel-btn');
@@ -120,24 +128,6 @@ function taskBtnChanger() {
    const editTaskModal = document.querySelector('.edit-task-modal');
    const newTaskModal = document.querySelector('.new-task-modal');
    const overlay = document.querySelector('.overlay');
-
-   // const showNewTaskForm = () => {
-   //    newTaskModal.classList.add('active');
-   //    overlay.classList.add('active');
-   //    document.getElementById('taskDescription').focus();
-   // }
-
-   // const showEditTaskForm = () => {
-   //    editTaskModal.classList.add('active');
-   //    overlay.classList.add('active');
-   //    document.getElementById('editTaskDescription').focus();
-   // }
-
-   // const closeModal = () => {
-   //    newTaskModal.classList.remove('active');
-   //    editTaskModal.classList.remove('active');
-   //    overlay.classList.remove('active');
-   // }
 
    function showNewTaskForm() {
       newTaskModal.classList.add('active');
@@ -175,24 +165,9 @@ function taskBtnChanger() {
    return { showEditTaskForm }
 }
 
-// function hamburgerMenu() {
-//    const hamburgMenu = document.getElementById('hamburgerMenu');
-//    hamburgMenu.addEventListener('click', () => {
-//       switch (document.getElementById('navbar').style.display = 'none') {
-//          case document.getElementById('navbar').style.display = 'none':
-//             document.getElementById('navbar').style.display = 'block';
-//             break;
-//          case document.getElementById('navbar').style.display = 'block':
-//             document.getElementById('navbar').style.display = 'none';
-//             break;
-//       }
-//    })
-// }
-
 export {
    createProjectDiv,
    createTaskDiv,
    projectBtnChanger,
    taskBtnChanger,
-   // hamburgerMenu
 };
