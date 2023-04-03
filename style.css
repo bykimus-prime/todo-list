@@ -20,9 +20,16 @@ body {
    background-color: lightblue;
 }
 
-.header button {
+#hamburgerMenu {
    position: absolute;
-   left: 0;
+   left: 10px;
+   width: 40px;
+}
+
+#hamburgerMenu:hover {
+   cursor: pointer;
+   background-color: lightblue;
+   filter: brightness(90%);
 }
 
 /* main */
@@ -130,7 +137,7 @@ body {
    border-radius: 6px;
    padding: 2px;
    margin-bottom: 6px;
-   height: 24px;
+   height: 30px;
 }
 
 .project-title,
@@ -153,7 +160,8 @@ body {
 }
 
 .remove-task-btn,
-.edit-task-btn {
+.edit-task-btn,
+.view-task-btn {
    width: 20px;
 }
 
@@ -315,7 +323,6 @@ form:invalid button {
 @media (max-width: 650px) {
    .navbar {
       width: 33%;
-      /* display: none; */
    }
 
    #newProjectBtn {
@@ -323,12 +330,27 @@ form:invalid button {
       height: 45px;
    }
 
-   .task-info-legend,
-   .user-task {
-      grid-template-columns: 1fr 1fr 1fr 1fr 0.7fr;
+   .user-task,
+   .task-info-legend {
+      display: flex;
    }
 
-   .user-task {
-      height: 50px;
+   .user-task p:nth-child(n+2):nth-child(-n+4),
+   .task-info-legend p:nth-child(n+2):nth-child(-n+4) {
+      display: none;
+   }
+
+   .task-btns {
+      width: 75px;
+   }
+
+   .view-task-btn {
+      visibility: visible;
+   }
+}
+
+@media (min-width: 651px) {
+   .view-task-btn {
+      visibility: hidden;
    }
 }
