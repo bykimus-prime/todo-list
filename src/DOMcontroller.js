@@ -39,7 +39,7 @@ function createTaskDiv (task, index) {
 
    // add task info to div
    const taskTitle = document.createElement('p');
-   taskTitle.classList.add('project-title');
+   taskTitle.classList.add('task-title');
    taskTitle.innerText = `${task.description}`;
    userTask.append(taskTitle);
 
@@ -62,15 +62,6 @@ function createTaskDiv (task, index) {
    const taskBtns = document.createElement('div');
    taskBtns.classList.add('task-btns');
    userTask.append(taskBtns);
-
-   // add view button to div
-   const viewTaskBtn = document.createElement('img');
-   viewTaskBtn.setAttribute('data', index);
-   viewTaskBtn.dataset.taskId = task.id;
-   viewTaskBtn.dataset.taskProjectId = task.projectId;
-   viewTaskBtn.classList.add('view-task-btn');
-   viewTaskBtn.src = './images/magnifying-glass-plus.svg';
-   taskBtns.appendChild(viewTaskBtn);
 
    // add edit button to div
    const editTaskBtn = document.createElement('img');
