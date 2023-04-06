@@ -341,16 +341,6 @@ form:invalid button {
    }
 
    .task-btns {
-      width: 75px;
-   }
-
-   .view-task-btn {
-      visibility: visible;
-   }
-}
-
-@media (min-width: 651px) {
-   .view-task-btn {
-      visibility: hidden;
+      width: 60px;
    }
 }
