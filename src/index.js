@@ -15,7 +15,6 @@ if (userAddedProjects == '') {
    userAddedProjects = JSON.parse(localStorage.getItem(LOCAL_STORAGE_PROJECTS_KEY));
    render();
 }
-
 projectBtnChanger();
 taskBtnChanger();
 addProject();

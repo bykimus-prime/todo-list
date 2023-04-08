@@ -1,6 +1,38 @@
 import { selectedProjectId, selectedTaskId } from "./staticListeners";
 
-function createProjectDiv (project, index) {
+function createDefaultProjectsList() {
+   const defaultProjects = document.querySelector('.default-projects');
+   // create all tasks div
+   const allTasks = document.createElement('div');
+   allTasks.textContent = 'All Tasks';
+   allTasks.classList.add('all-tasks');
+   allTasks.dataset.projectId = '1';
+   if (allTasks.dataset.projectId === selectedProjectId) {
+      allTasks.classList.add('selected');
+   }
+   // create today tasks div
+   const todayTasks = document.createElement('div');
+   todayTasks.textContent = 'Today';
+   todayTasks.classList.add('today-tasks');
+   todayTasks.dataset.projectId = 'today';
+   if (todayTasks.dataset.projectId === selectedProjectId) {
+      todayTasks.classList.add('selected');
+   }
+   // create week tasks div
+   const weekTasks = document.createElement('div');
+   weekTasks.textContent = 'Week';
+   weekTasks.classList.add('week-tasks');
+   weekTasks.dataset.projectId = 'week';
+   if (weekTasks.dataset.projectId === selectedProjectId) {
+      weekTasks.classList.add('selected');
+   }
+   // append to default projects
+   defaultProjects.append(allTasks);
+   defaultProjects.append(todayTasks);
+   defaultProjects.append(weekTasks);
+}
+
+function createProjectDiv(project, index) {
    const userProjects = document.querySelector('[data-user-projects]');
    // create project div
    const userProject = document.createElement('div');
@@ -30,7 +62,7 @@ function createProjectDiv (project, index) {
    userProjects.append(userProject);
 }
 
-function createTaskDiv (task, index) {
+function createTaskDiv(task, index) {
    const userTasks = document.querySelector('.user-tasks');
    // create task div
    const userTask = document.createElement('div');
@@ -161,4 +193,5 @@ export {
    createTaskDiv,
    projectBtnChanger,
    taskBtnChanger,
+   createDefaultProjectsList,
 };

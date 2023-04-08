@@ -1,4 +1,4 @@
-import { createProjectDiv } from "./DOMcontroller";
+import { createProjectDiv, createDefaultProjectsList } from "./DOMcontroller";
 import { displayTasks } from "./tasks";
 import { save, LOCAL_STORAGE_PROJECTS_KEY } from "./localStorage";
 
@@ -31,13 +31,15 @@ function displayProjects() {
    const userProjects = document.querySelector('[data-user-projects]');
    const taskProject = document.getElementById('taskProject');
    const editTaskProject = document.getElementById('editTaskProject');
+   const defaultProjects = document.querySelector('.default-projects');
    userProjects.textContent = '';
    taskProject.textContent = '';
    editTaskProject.textContent = '';
+   defaultProjects.textContent = '';
    userAddedProjects.forEach((project, index) => {
       createProjectDiv(project, index);
    });
-
+   // adds select option to add new task form
    userAddedProjects.forEach((project) => {
       let newOption = document.createElement('option');
       newOption.value = project.id;
@@ -45,7 +47,7 @@ function displayProjects() {
       newOption.id = project.projectTitle;
       taskProject.appendChild(newOption);
    });
-
+   // adds select option to edit task
    userAddedProjects.forEach((project) => {
       let newOption = document.createElement('option');
       newOption.value = project.id;
@@ -53,6 +55,7 @@ function displayProjects() {
       newOption.id = project.projectTitle;
       editTaskProject.appendChild(newOption);
    });
+   createDefaultProjectsList();
    removeUserProject();
 }
 
