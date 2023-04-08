@@ -2,6 +2,7 @@ import { createTaskDiv, taskBtnChanger } from "./DOMcontroller";
 import { userAddedProjects } from "./projects";
 import { selectedProjectId, selectedTaskId } from "./staticListeners";
 import { format, isEqual, addDays, subDays, isWithinInterval } from "date-fns";
+import { save } from "./localStorage";
 
 class Task {
    constructor(id, description, dueDate, priority, projectId, projectName) {
@@ -26,6 +27,7 @@ function addTask() {
       let id = Date.now().toString();
       pushTask(id, description.value, dueDate.value, priority.value, projectId.value, projectId.options[projectId.selectedIndex].id);
       document.getElementById('taskForm').reset(); // resets form on submit
+      save();
       displayTasks();
    });
 }
@@ -99,6 +101,7 @@ function editTask() {
                Object.assign(target, source);
             }
             document.getElementById('taskForm').reset();
+            save();
             displayTasks();
          });
       });
@@ -162,6 +165,7 @@ function removeUserTask() {
          const matchingTaskId = e.target.dataset.taskProjectId;
          const selectedProject = userAddedProjects.find(project => project.id === matchingTaskId);
          selectedProject.projectTasks.splice(btn.getAttribute('data'), 1);
+         save();
          displayTasks();
       });
    });

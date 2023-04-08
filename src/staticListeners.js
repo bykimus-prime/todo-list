@@ -1,5 +1,6 @@
 import { displayTasks } from "./tasks";
 import { render } from "./projects";
+import { save, LOCAL_STORAGE_SELECTED_PROJECT_ID_KEY } from "./localStorage";
 
 const userProjects = document.querySelector('[data-user-projects]');
 const userTasks = document.querySelector('[data-project-tasks]');
@@ -8,7 +9,7 @@ const todayTasks = document.querySelector('.today-tasks');
 const weekTasks = document.querySelector('.week-tasks');
 const hamburgMenu = document.getElementById('hamburgerMenu');
 
-let selectedProjectId = null
+let selectedProjectId = localStorage.getItem(LOCAL_STORAGE_SELECTED_PROJECT_ID_KEY); // will return null if none selected
 let selectedTaskId = null;
 
 // if the clicked item is a div, set the global variable to the clicked div's projectId
@@ -18,32 +19,40 @@ userProjects.addEventListener('click', e => {
       allTasks.classList.remove('selected');
       todayTasks.classList.remove('selected');
       weekTasks.classList.remove('selected');
+      console.log(selectedProjectId);
+      save();
       render();
    }
 })
 
 // sets selected project id and other things to show specified tasks when clicking the related div
 allTasks.addEventListener('click', e => {
-   selectedProjectId = '1';
+   selectedProjectId = e.target.dataset.projectId;
    allTasks.classList.add('selected');
    todayTasks.classList.remove('selected');
    weekTasks.classList.remove('selected');
+   console.log(selectedProjectId);
+   save();
    render();
 })
 
 todayTasks.addEventListener('click', e => {
-   selectedProjectId = 'today';
+   selectedProjectId = e.target.dataset.projectId;
    todayTasks.classList.add('selected');
    allTasks.classList.remove('selected');
    weekTasks.classList.remove('selected');
+   console.log(selectedProjectId);
+   save();
    render();
 })
 
 weekTasks.addEventListener('click', e => {
-   selectedProjectId = 'week';
+   selectedProjectId = e.target.dataset.projectId;
    weekTasks.classList.add('selected');
    allTasks.classList.remove('selected');
    todayTasks.classList.remove('selected');
+   console.log(selectedProjectId);
+   save();
    render();
 })
 

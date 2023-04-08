@@ -1,7 +1,8 @@
 import { createProjectDiv } from "./DOMcontroller";
 import { displayTasks } from "./tasks";
+import { save, LOCAL_STORAGE_PROJECTS_KEY } from "./localStorage";
 
-let userAddedProjects = [];
+let userAddedProjects = JSON.parse(localStorage.getItem(LOCAL_STORAGE_PROJECTS_KEY)) || [];
 
 class Project {
    constructor(id, projectTitle) {
@@ -21,6 +22,7 @@ function addProject() {
       const project = new Project(id, projectTitle.value);
       projectTitle.value = null; // clear form input field
       userAddedProjects.push(project);
+      save();
       displayProjects();
    });
 }
@@ -59,6 +61,7 @@ function removeUserProject() {
    rmvProjectBtn.forEach((btn) => {
       btn.addEventListener('click', () => {
          userAddedProjects.splice(btn.getAttribute('data'), 1);
+         save();
          render();
       });
    });
