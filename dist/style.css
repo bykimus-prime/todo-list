@@ -101,6 +101,14 @@ body {
    width: 92px;
 }
 
+.project-text-input input {
+   padding-left: 2px;
+}
+
+.project-form-btns {
+   margin-top: 4px;
+}
+
 /* task display area */
 
 .content-display {
@@ -320,7 +328,7 @@ form:invalid button {
 
 /* mobile device styling */
 
-@media (max-width: 650px) {
+@media (max-width: 850px) {
    .navbar {
       width: 33%;
    }

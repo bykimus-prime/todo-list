@@ -36,6 +36,7 @@ function displayProjects() {
    taskProject.textContent = '';
    editTaskProject.textContent = '';
    defaultProjects.textContent = '';
+   createDefaultProjectsList();
    userAddedProjects.forEach((project, index) => {
       createProjectDiv(project, index);
    });
@@ -55,7 +56,6 @@ function displayProjects() {
       newOption.id = project.projectTitle;
       editTaskProject.appendChild(newOption);
    });
-   createDefaultProjectsList();
    removeUserProject();
 }
 

@@ -14,7 +14,6 @@ let selectedTaskId = null;
 userProjects.addEventListener('click', e => {
    if (e.target.tagName.toLowerCase() === 'div') { // i'm not sure we need this if statement
       selectedProjectId = e.target.dataset.projectId;
-      console.log(selectedProjectId);
       save();
       render();
    }
@@ -23,7 +22,6 @@ userProjects.addEventListener('click', e => {
 // sets global variable to clicked default project div's projectId
 defaultProjects.addEventListener('click', e => {
    selectedProjectId = e.target.dataset.projectId;
-   console.log(selectedProjectId);
    save();
    render();
 })
