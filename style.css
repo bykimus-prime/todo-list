@@ -220,6 +220,8 @@ body {
 
 #taskFormDispBtn,
 #newProjectBtn {
+   display: flex;
+   align-items: center;
    width: 120px;
    height: 35px;
    padding: 5px;
