@@ -222,6 +222,7 @@ body {
 #newProjectBtn {
    display: flex;
    align-items: center;
+   justify-content: center;
    width: 120px;
    height: 35px;
    padding: 5px;
@@ -337,7 +338,7 @@ form:invalid button {
 
    #newProjectBtn {
       width: 80px;
-      height: 45px;
+      height: 55px;
    }
 
    .user-task,

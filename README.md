@@ -1,6 +1,6 @@
 # TOP-todo-list
 
-A standard todo list. Makes use of todos as objects that are dynamically created using factory functions/constructors/classes. The user will be able to create todo items and put them into a "projects" list. Users can create new projects and choose which created todo items go into. A basic UI to view all projects, view todos in each project, expand a todo item to see/edit details, and delete a todo item.
+A standard todo list. The user can create todo items and put them into a "projects" list. Todos are created as objects within an array of a project folder. Users can create new projects and choose which created todo items go into which project. Through clicking there is the ability to sort todos by all todos, todos with a date of today, todos with a date within the next week, and also todos of user-created projects individually. Todos can be deleted with the respective button, as well as projects. Todos can be edited, and while using a mobile device this also functions as a way to see the details of a todo, due to trimming down the todo elements to fit mobile resolutions. There's a hamburger menu to help with information presentation on mobile. Local storage has also been implemented, so refreshing the page should keep user-inputed data, resetting upon clearing of browser cache.
 
 ## Built With 
 
@@ -30,10 +30,12 @@ In order to setup and work on this project on your own, you will need to:
 `npm install date-fns --save`
 
 ### Usage
-<!-- ##### Once you are on the homepage, you have three links in the navbar
-- **Home** - To return to the homepage
-- **Menu** - Takes you to the restaurant menu
-- **About** - Shows basic restaurant contact information -->
+##### There is a default project to add todos. The user can create more todos and put them here or create their own projects.
+- **All Tasks** - Shows all todos across all projects, including default.
+- **Today** - Shows all todos with a due date of today's date.
+- **Week** - Shows all todos with a due date that is within the next 7 days.
+- **Add New Project** - Creates a new project that the user can add todos into.
+- **Add New Task** - Creates a new todo item.
 
 ## Deployed on GitHub Pages
 
