@@ -11,7 +11,7 @@ A standard todo list. The user can create todo items and put them into a "projec
 - npm
 
 ## Live Demo
-[Todo List](https://bykimus-prime.github.io/TOP-todo-list/)
+[Todo List](https://bykimus-prime.github.io/todo-list/)
 
 ## Getting Started
 
