@@ -18,7 +18,7 @@ A standard todo list. The user can create todo items and put them into a "projec
 In order to setup and work on this project on your own, you will need to:
 
 1. Clone this project:  
-`git clone https://github.com/bykimus-prime/TOP-todo-list.git`
+`git clone https://github.com/bykimus-prime/todo-list.git`
 
 2. Once you have cloned this project, you need to install npm and webpack. The required dependencies are:  
 `npm install webpack webpack-cli --save-dev`. This will create the needed node_modules file in your project directory.
